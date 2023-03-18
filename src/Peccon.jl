@@ -1,5 +1,7 @@
 module Peccon
 
-# Write your package code here.
+include("../src/extract.jl")
+include("../src/general.jl")
+include("../src/mpt.jl")
 
 end

@@ -5,6 +5,9 @@ include("../src/mpt.jl")
 tickers = ["ADAEUR", "SPY", "DIS"]
 data = fin_data(tickers, 250)
 
+
+CSV.write("test/test_data/portfolio", data )
+
 returns_port = calc_returns(data,tickers )
 
 

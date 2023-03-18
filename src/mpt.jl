@@ -5,11 +5,8 @@ using AlphaVantage,
      Statistics, 
      Distributions, 
      IterTools, 
-     Plots
-
-
-
-
+     Plots, 
+     CSV
 
 #= 
 make random allocation on weights to see the trade-off between risk and return 
