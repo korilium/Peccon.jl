@@ -62,7 +62,7 @@ end
 # port_sim = mpt(port_returns)
 # @df port_sim scatter(:port_std, :exp_return)
 #calculate the sharp ratio 
-function sharp_ration(port_sim, rf = 0.02)
+function sharp_ratio(port_sim, rf = 0.02)
     port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
     return sort!(port_sim, :sharp_ratio)
 end 
