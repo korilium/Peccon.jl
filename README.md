@@ -4,6 +4,8 @@ This is julia package for the Peccon project.
 Documentation can be found here: https://korilium.github.io/Peccon.jl/intro.html
 
 **Documentation**: [![][docs-latest-img]][docs-latest-url]
+
+[docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-stable-url]: https://korilium.github.io/Peccon.jl/intro.html
 
 
