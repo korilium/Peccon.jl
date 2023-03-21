@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>The Financial Basics &#8212; My sample book</title>
+    <title>The Financial Basics &#8212; Pecunia Consilium</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Modern Portfolio Theory" href="modern_portfolio_theory.html" />
@@ -98,7 +100,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Pecunia Consilium</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -198,7 +200,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/korilium/Peccon.jl"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -215,7 +217,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffundamental_understandings.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/korilium/Peccon.jl/issues/new?title=Issue%20on%20page%20%2Ffundamental_understandings.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -304,9 +306,14 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intution">
-   intution
+   Intution
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#risk-and-returns">
+     risk and returns
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interest-rate">
      Interest Rate
@@ -367,9 +374,14 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intution">
-   intution
+   Intution
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#risk-and-returns">
+     risk and returns
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interest-rate">
      Interest Rate
@@ -423,11 +435,43 @@ title="Print to PDF"
 <h1>The Financial Basics<a class="headerlink" href="#the-financial-basics" title="Permalink to this headline">#</a></h1>
 <p>to be made</p>
 <section id="intution">
-<h2>intution<a class="headerlink" href="#intution" title="Permalink to this headline">#</a></h2>
+<h2>Intution<a class="headerlink" href="#intution" title="Permalink to this headline">#</a></h2>
 <p>to be made</p>
+<section id="risk-and-returns">
+<h3>risk and returns<a class="headerlink" href="#risk-and-returns" title="Permalink to this headline">#</a></h3>
+</section>
 <section id="interest-rate">
 <h3>Interest Rate<a class="headerlink" href="#interest-rate" title="Permalink to this headline">#</a></h3>
-<p>to be made</p>
+<p>Interest rates are a percentage of an initial capital and are calculated on a time horizon. For example
+a yearly interest rate of two percent on an initial capital of 1 000 euro will amount to 20 euro after one year, while a monthly interest rate of four percent for the same capital will return 40 euro per month. It is therefore important to remember two questions when faced with interest rates:</p>
+<ul class="simple">
+<li><p>On what time horizon is the interest calculated on?</p></li>
+<li><p>To which initial investment does the interest rate refer to?</p></li>
+</ul>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="c88b6fe6-7d22-4f54-91b2-e5427f3458d9" name="a7492f1e-4e84-425a-b3e3-3f7b04974d2e" type="radio">
+</input><label class="sd-tab-label" for="c88b6fe6-7d22-4f54-91b2-e5427f3458d9">
+Question</label><div class="sd-tab-content docutils">
+<p>what is a better investment?</p>
+<ul class="simple">
+<li><p>10% yearly interest rate on a 10 000 euro investment</p></li>
+<li><p>2% monthly interest rate on a 5 000 euro investment</p></li>
+</ul>
+</div>
+<input id="a748fb20-7deb-4e56-8270-e8ece455dec2" name="a7492f1e-4e84-425a-b3e3-3f7b04974d2e" type="radio">
+</input><label class="sd-tab-label" for="a748fb20-7deb-4e56-8270-e8ece455dec2">
+Answer</label><div class="sd-tab-content docutils">
+<p>First, set the monthly interest rate to the yearly interest rate. This is done by multiplying 1.02 12x times</p>
+<div class="math notranslate nohighlight">
+\[ 1.02^{12} \approx 1.27 \]</div>
+<p>Know we know that the monthly interest rate is actually 2.7x times larger then the 10% interest rate. Option two becomes more attractive, but we still have to account for the initial capital:</p>
+<div class="math notranslate nohighlight">
+\[ 1.10 * 10000 = 11000 \]</div>
+<div class="math notranslate nohighlight">
+\[ 1.27 * 5000  = 6350 \]</div>
+<p>The second investment option actually gives us 350 euro more in return and that with a lower initial investment!</p>
+</div>
+</div>
 </section>
 <section id="inflation">
 <h3>Inflation<a class="headerlink" href="#inflation" title="Permalink to this headline">#</a></h3>
@@ -504,7 +548,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Ignace Decocq<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
