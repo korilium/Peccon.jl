@@ -3,13 +3,17 @@ to be made
 
 
 
-## intution
+## Intution
 to be made 
+
+### risk and returns 
 
 ### Interest Rate 
-to be made 
 
+Interest rates are a percentage of an initial capital of the investment and are calculated on a time horizon. For example 
+a yearly interest rate of two percent on an initial capital of 1 000 euro will amount to 20 euro after one year, while an monthly interest rate of four percent in the same capital will return 40 per month. 
 
+To better understand the 
 ### Inflation 
 to be made 
 
