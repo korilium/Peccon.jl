@@ -3,14 +3,14 @@ using Test,
     CSV, 
     DataFrames
 
-
+const dir = joinpath(dirname(pathof(Peccon)), "..", "test", "test_data")
 
 ### create some test to check if the functions work properly 
 @testset "Peccon.jl" begin
     # load in test data 
-    test_ada = DataFrame(CSV.File("test/test_data/ADAEUR.csv"))
-    test_spy = DataFrame(CSV.File("test/test_data/SPY.csv"))
-    test_dis = DataFrame(CSV.File("test/test_data/DIS.csv"))
+    test_ada = DataFrame(CSV.File(joinpath(dir,"ADAEUR.csv")))
+    test_spy = DataFrame(CSV.File(joinpath(dir,"SPY.csv")))
+    test_dis = DataFrame(CSV.File(joinpath(dir,"DIS.csv")))
     test_port  = [test_ada, test_spy, test_dis]
     tickers = ["ADAEUR", "SPY", "DIS"]
 
