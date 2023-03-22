@@ -1,4 +1,4 @@
-# Library of financial planning tools
+# Intro
 
 In this jupyter book you can find all the fin tools that have been developed to optimize investment, spending and income. 
 These tools enable you to better anticipate your future financial well-being. 

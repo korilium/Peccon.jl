@@ -6,3 +6,4 @@ root: intro
 chapters:
 - file: fundamental_understandings
 - file: modern_portfolio_theory
+- file: library 
