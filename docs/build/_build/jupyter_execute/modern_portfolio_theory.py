@@ -11,7 +11,7 @@ using Peccon, Plots, StatsPlots
 
 # ## load in data 
 
-# In[3]:
+# In[16]:
 
 
 tickers = ["ADAEUR", "SPY", "DIS"]
@@ -20,7 +20,7 @@ data = Peccon.fin_data(tickers)
 
 # ## Calculate Returns and Simulate Portfolios 
 
-# In[6]:
+# In[17]:
 
 
 returns = Peccon.calc_returns(data, tickers)
@@ -28,13 +28,13 @@ returns = Peccon.calc_returns(data, tickers)
 sim_port = Peccon.sim_mpt(returns)
 
 
-# In[12]:
+# In[18]:
 
 
 @df sim_port scatter( :port_std, :exp_return)
 
 
-# In[14]:
+# In[19]:
 
 
 sharp = Peccon.sharp_ratio(sim_port)

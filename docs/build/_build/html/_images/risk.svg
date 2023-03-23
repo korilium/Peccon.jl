@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="441px"
+   height="431px"
+   viewBox="-0.5 -0.5 441 431"
+   content="&lt;mxfile&gt;&lt;diagram id=&quot;jdRt68jfnBv56bQDTTx4&quot; name=&quot;Page-1&quot;&gt;7VnbjtowEP2aPFbKhbDs48LS9qXSSlTqs4lnibUmTm1z69fXjp17WCBEiJWQeLAn9tg+58zEE5xgtt7/4CiNfzEM1PFdvHeCV8f3n3zf0T8XH4whHE+MYcUJNiavNCzIP7BG11o3BIOoDZSMUUnSujFiSQKRrNkQ52xXH/bOaH3VFK2gZVhEiLatfwiWsbFOQre0/wSyivOVPdc+WaN8sDWIGGG2q5iCuRPMOGPStNb7GVCNXY6Lmff9yNNiYxwSec6EnIktoht7OLsxechPy9kmwaAnuE4w3cVEwiJFkX66U/QqWyzXVPU81bTugEvYH92TV5xUKQTYGiQ/qCH5hMCCY9Uxst1dCfUot8UVmEf5PGTpXRWuSwRUw4JwBJDTeECCX7SIVC+iSAgS1SGo42WmA24p6iQclfOGHcfNbRwokmRbd98FgV3hjRG1cIG27zbRbqAo2IZHYGdVpXTC0aThRyK+AtnykxFSnPosjoIHRz05Cv0TjoYjaXQRSQlLoM5QtOHbjCDdEWpfsjG2H4VqAxlWVqP3xKo37slqkQ0vZFUBig6VYakeII5vuKmeSe3dohrGYV/FhF9BMd7oniTTSrLnSibomQgulUzw3NhwMKxmnr6EZu7q5VHcPS/WzOQ2mmmmszwvDqWZvIoYRjQYibjo9FWLQe7xTvpMLFfcRSanCVeFWJpVNOiQLanoeyeULuwIwah2NhWmFh2rZjYM+HwLeoOGf7tb5TGcOuGrdTJjlPFKSgHlBS0zv24mGolkpZ8CJ+pwoKdEoNd4Ky1TkaD0NzO4HRfdVQWY3yjAvI4KzO/QYDOx9Km/vMsKsFsH5yOVDx+dnvcIz2vCs1DFLcLzstr75uH5uJ0PH55nVPKP8PwkPMc3DM/2TSflbImWhBJ5aNGmDinr4SkkZx/QgLyDBUTJKikQVgYNGYkQfbEP1gRjvUzn9+LBMQ+at02/jfm4A/NBvhi3y4mIJQL+biBRh75PzLOoIUzP+vY8EAnN7/YFusOToLrlfyQmp5V/NAXz/w==&lt;/diagram&gt;&lt;/mxfile&gt;"
+   id="svg64"
+   sodipodi:docname="risk.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <sodipodi:namedview
+     id="namedview66"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-global="false"
+     inkscape:zoom="1.8607889"
+     inkscape:cx="190.5106"
+     inkscape:cy="206.09539"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg64" />
+  <defs
+     id="defs2" />
+  <g
+     id="g54"
+     inkscape:transform-center-x="248.2818"
+     inkscape:transform-center-y="43.529926">
+    <rect
+       x="0"
+       y="0"
+       width="440"
+       height="430"
+       fill="#ffffff"
+       stroke="#000000"
+       pointer-events="all"
+       id="rect4" />
+    <path
+       d="M 70,360 V 46.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path6" />
+    <path
+       d="m 70,41.12 3.5,7 -3.5,-1.75 -3.5,1.75 z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="all"
+       id="path8" />
+    <path
+       d="M 70,360 H 383.63"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path10" />
+    <path
+       d="m 388.88,360 -7,3.5 1.75,-3.5 -1.75,-3.5 z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="all"
+       id="path12" />
+    <path
+       d="M 110,110 Q 390,40 310,360"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path14" />
+    <path
+       d="m 110,230 q 150,-40 80,130"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path16" />
+    <path
+       d="M 110,170 Q 310,120 250,360"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="stroke"
+       id="path18" />
+    <path
+       d="m 70,120 q 0,0 40,-10"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       stroke-dasharray="3, 3"
+       pointer-events="stroke"
+       id="path20" />
+    <circle
+       cx="110"
+       cy="110"
+       fill="#000000"
+       stroke="none"
+       pointer-events="all"
+       id="ellipse22"
+       r="3" />
+    <rect
+       x="100"
+       y="100"
+       width="20"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect24" />
+    <path
+       d="m 70,180 q 0,0 40,-10"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       stroke-dasharray="3, 3"
+       pointer-events="stroke"
+       id="path26" />
+    <circle
+       cx="110"
+       cy="170"
+       fill="#000000"
+       stroke="none"
+       pointer-events="all"
+       id="ellipse28"
+       r="3" />
+    <rect
+       x="100"
+       y="160"
+       width="20"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect30" />
+    <path
+       d="m 70,240 q 0,0 40,-10"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       stroke-dasharray="3, 3"
+       pointer-events="stroke"
+       id="path32" />
+    <circle
+       cx="110"
+       cy="230"
+       fill="#000000"
+       stroke="none"
+       pointer-events="all"
+       id="ellipse34"
+       r="3" />
+    <rect
+       x="100"
+       y="220"
+       width="20"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect36" />
+    <rect
+       x="210"
+       y="380"
+       width="60"
+       height="30"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect38" />
+    <g
+       transform="translate(-0.5,-0.5)"
+       id="g44">
+      <switch
+         id="switch42">
+        <foreignObject
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 395px; margin-left: 211px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">probability</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="240"
+           y="399"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text40">probability</text>
+      </switch>
+    </g>
+    <rect
+       x="0"
+       y="190"
+       width="60"
+       height="30"
+       fill="none"
+       stroke="none"
+       transform="rotate(-90,30,205)"
+       pointer-events="all"
+       id="rect46" />
+    <g
+       transform="rotate(-90,29.5,205)"
+       id="g52">
+      <switch
+         id="switch50">
+        <foreignObject
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 205px; margin-left: 1px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">consequence</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="30"
+           y="209"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text48">consequence</text>
+      </switch>
+    </g>
+  </g>
+  <switch
+     id="switch62">
+    <g
+       requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+       id="g56" />
+    <a
+       transform="translate(0,-5)"
+       xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems"
+       target="_blank"
+       id="a60">
+      <text
+         text-anchor="middle"
+         font-size="10px"
+         x="50%"
+         y="100%"
+         id="text58">Text is not SVG - cannot display</text>
+    </a>
+  </switch>
+  <path
+     style="fill:#800000;stroke-width:0.380004"
+     d="m 251.5625,359.60075 c 0,-0.14455 0.95125,-4.37684 2.11391,-9.4051 7.77994,-33.64676 11.18885,-59.57815 11.18431,-85.07825 -0.007,-36.85858 -8.02616,-62.27739 -25.24082,-80.00295 -12.88567,-13.2681 -30.22832,-20.79824 -53.60806,-23.27651 -5.83106,-0.61809 -23.17013,-0.61815 -29.83029,-9e-5 -11.73936,1.0894 -25.74189,3.33925 -37.75901,6.06692 -4.76578,1.08174 -4.90645,1.09187 -5.59539,0.40293 -1.94343,-1.94343 -4.70062,-0.96115 -5.76323,2.0532 -0.06,0.17007 -8.186247,2.32992 -18.05844,4.79968 l -17.949442,4.49046 0.09733,-29.28703 0.09734,-29.28702 18.118213,-4.52787 18.118209,-4.52786 0.85863,0.79993 c 1.19676,1.11496 3.15475,1.05508 4.34263,-0.1328 0.513,-0.513 0.93274,-1.18692 0.93274,-1.49759 0,-0.31067 0.13517,-0.64839 0.30039,-0.7505 0.53602,-0.33128 19.07384,-4.35661 26.29987,-5.7108 24.23537,-4.5418 42.0336,-6.172892 63.35165,-5.805777 12.60191,0.217016 15.46728,0.40892 23.85922,1.597937 46.97543,6.65572 77.57033,31.47937 91.38535,74.14692 5.56094,17.17489 8.15186,34.51878 8.6201,57.70372 0.68079,33.70903 -4.59361,73.8045 -15.89292,120.81637 l -1.60432,6.6749 h -29.18898 c -16.05395,0 -29.18899,-0.11827 -29.18899,-0.26282 z"
+     id="path2412"
+     transform="translate(-0.5,-0.5)" />
+  <path
+     style="fill:#d4aa00;stroke-width:0.380004"
+     d="m 191.7119,359.71146 c 0,-0.0863 1.09442,-2.95159 2.43205,-6.36742 11.04486,-28.20468 17.06282,-50.63527 18.8821,-70.37885 0.27054,-2.936 0.36606,-7.71574 0.23922,-11.97012 -0.32383,-10.86219 -1.76573,-17.54034 -5.38542,-24.94263 -9.79218,-20.02507 -32.79986,-27.40567 -69.17847,-22.19167 -5.69661,0.81647 -16.04701,2.85022 -21.70855,4.26551 l -3.46837,0.86704 -1.01787,-0.87553 c -1.19158,-1.02496 -2.105,-1.09699 -3.66715,-0.28917 -0.72532,0.37508 -1.2122,0.97779 -1.35116,1.67259 l -0.21725,1.08622 -17.627191,4.40747 c -9.694958,2.42411 -17.799531,4.40747 -18.010164,4.40747 -0.253962,0 -0.382968,-9.82591 -0.382968,-29.16934 V 181.0637 l 18.033311,-4.50185 18.033312,-4.50184 1.01812,0.80086 c 1.45247,1.14251 3.02405,1.03092 4.3649,-0.30993 0.61093,-0.61093 1.11078,-1.35533 1.11078,-1.65422 0,-0.39657 1.92574,-0.96434 7.12507,-2.10073 36.31234,-7.93655 65.64391,-8.22042 87.87587,-0.85044 13.77022,4.56487 25.438,12.37135 33.81793,22.62634 11.88487,14.54416 18.61942,34.48618 20.55675,60.87166 0.55443,7.55089 0.22433,28.30806 -0.58806,36.97931 -1.86204,19.8749 -5.52207,41.37467 -10.96498,64.41064 l -1.61617,6.84007 -29.15282,0.0974 c -16.03405,0.0535 -29.15282,0.0268 -29.15282,-0.0595 z"
+     id="path2784"
+     transform="translate(-0.5,-0.5)" />
+  <path
+     style="fill:#008000;stroke-width:0.380004"
+     d="m 71.250707,300.44043 v -59.42315 l 18.14518,-4.51988 18.145183,-4.51988 0.84143,0.8624 c 1.55236,1.59106 4.63552,0.66004 5.1949,-1.5687 0.21157,-0.84298 0.73028,-1.04191 5.97616,-2.2919 22.45977,-5.35173 41.86927,-6.72818 56.11333,-3.97936 17.18814,3.31697 28.19416,12.37716 33.37957,27.4782 6.88484,20.05015 1.56467,54.65388 -14.87418,96.7453 -1.59171,4.07554 -3.17533,8.13683 -3.51917,9.02509 l -0.62516,1.61502 H 130.63933 71.250707 Z"
+     id="path2998"
+     transform="translate(-0.5,-0.5)" />
+  <text
+     xml:space="preserve"
+     style="font-size:16px;line-height:1.25;font-family:sans-serif"
+     x="110.20574"
+     y="292.92395"
+     id="text8074"><tspan
+       sodipodi:role="line"
+       id="tspan8072"
+       x="110.20574"
+       y="292.92395">low risk</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;line-height:1.25;font-family:sans-serif"
+     x="127.94016"
+     y="197.26559"
+     id="text12486"><tspan
+       sodipodi:role="line"
+       id="tspan12484"
+       x="127.94016"
+       y="197.26559">medium risk</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;line-height:1.25;font-family:sans-serif"
+     x="198.34039"
+     y="133.85162"
+     id="text13722"><tspan
+       sodipodi:role="line"
+       id="tspan13720"
+       x="198.34039"
+       y="133.85162">high risk</tspan></text>
+</svg>

@@ -13,6 +13,8 @@ Adjusting your exposure to risk is what we call risk management. <b>The main goa
 
 
 Note that there are two dimensions when talking about risk (see graph): 
+
+![risk](images/risk.svg)
 * the severity of the loss if the event occurs 
 * the probability of the event 
 
@@ -31,7 +33,7 @@ test if tab works
 ````
 
 Returns are coherently linked with risks: The higher the risk the higher the return. You can imagine it as in the following graph. 
-
+![risk_return](images/risk_return.svg)
 Returns are always expressed as an percentage of the initial investment and always refer to a certain time period. In the stock market with can measure the risk of a stock by analyzing the fluctuations of the daily returns. 
 
 
