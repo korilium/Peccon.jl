@@ -21,7 +21,7 @@ Note that there are two dimensions when talking about risk (see graph):
 
 
 
-The most precarious risks for an investment are the one's with low probability and high consequence. The main reason for this is that the risks are not observed as much and thus estimating the probability of occurrence is rather difficult. Also, we humans tend to be irrational when dealing with risks {cite}`montibeller2015cognitive`. We generally over/underestimate them and are therefore exposed/overprotected to them {cite}`Slovic2004`.
+The most precarious risks for an investment are the one's with low probability and high consequence. The main reason for this is that the risks are not observed as much and thus estimating the probability of occurrence is rather difficult. Also, we humans tend to be irrational when dealing with risks {cite}`montibeller2015cognitive`. We generally over/underestimate them and are therefore overexposed to them or overprotected from them {cite}`Slovic2004`.
 
 ````{tab-set}
 ```{tab-item} Question 

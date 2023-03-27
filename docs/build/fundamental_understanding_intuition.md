@@ -10,7 +10,7 @@ to be made
 Risks are all about chances of future events, more specifically, chances of negative future events. In finance we always try to manage the negative impacts events might have on our investments. Take for example a coin flip. There are two possible outcomes: heads or tails. Each has a 50% chance of happening. In our example we maybe want to avoid flipping tail because we can lose 50 euros, while we win 50 euro if we get head. We therefore adjust the coin so that the probability of flipping tails will decrease. Adjusting your exposure to risk is what we call risk management. <b>The main goal of risk management is that if the event occurs we can live with the loss. </b> The idea is therefore that you set your own risk appetite (what are you willing to lose?). 
 
 
-The general idea about risk with respect to age is that as we grow older we should take less risk as the consequence of a bad event has a larger impact on your financial well-being. 
+The general notion about risk with respect to age is that as we grow older we should take less risks as the consequence of a bad event has a larger impact on your financial well-being. 
 
 
 Note that there are two dimensions when talking about risk (see graph): 
