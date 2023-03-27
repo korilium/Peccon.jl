@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>library &#8212; Pecunia Consilium</title>
+    <title>Theory &#8212; Pecunia Consilium</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Modern Portfolio Theory" href="modern_portfolio_theory.html" />
+    <link rel="next" title="Planning tools" href="financial_planning_tools.html" />
+    <link rel="prev" title="Intuition" href="fundamental_understanding_intuition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,19 +115,48 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="fundamental_understandings.html">
-   The Financial Basics
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fundamental_understanding_intro.html">
+   Fundamental Understanding
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="fundamental_understanding_intuition.html">
+     Intuition
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="financial_planning_tools.html">
+   Planning tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="modern_portfolio_theory.html">
+     Modern Portfolio Theory
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="modern_portfolio_theory.html">
-   Modern Portfolio Theory
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   library
+  <a class="reference internal" href="API.html">
+   API
   </a>
  </li>
 </ul>
@@ -219,7 +249,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/korilium/Peccon.jl/issues/new?title=Issue%20on%20page%20%2Flibrary.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/korilium/Peccon.jl/issues/new?title=Issue%20on%20page%20%2Ffundamental_understanding_technical.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -247,7 +277,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/library.md"
+        <a href="_sources/fundamental_understanding_technical.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -307,18 +337,40 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-in-data">
-   loading in data
+  <a class="reference internal nav-link" href="#risk-management-and-return">
+   risk management and return
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-returns">
-   calculating returns
+  <a class="reference internal nav-link" href="#interest-rate">
+   Interest Rate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modern-portfolio-theory">
-   modern portfolio theory
+  <a class="reference internal nav-link" href="#inflation">
+   Inflation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-monetary-economics">
+   The Monetary Economics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#money-creation-and-fractional-reserve-banking">
+     money creation and fractional reserve banking
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#income">
+   income
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spending">
+   spending
   </a>
  </li>
 </ul>
@@ -330,7 +382,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>library</h1>
+                <h1>Theory</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -341,18 +393,40 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-in-data">
-   loading in data
+  <a class="reference internal nav-link" href="#risk-management-and-return">
+   risk management and return
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-returns">
-   calculating returns
+  <a class="reference internal nav-link" href="#interest-rate">
+   Interest Rate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modern-portfolio-theory">
-   modern portfolio theory
+  <a class="reference internal nav-link" href="#inflation">
+   Inflation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-monetary-economics">
+   The Monetary Economics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#money-creation-and-fractional-reserve-banking">
+     money creation and fractional reserve banking
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#income">
+   income
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spending">
+   spending
   </a>
  </li>
 </ul>
@@ -365,16 +439,35 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="library">
-<h1>library<a class="headerlink" href="#library" title="Permalink to this headline">#</a></h1>
-<section id="loading-in-data">
-<h2>loading in data<a class="headerlink" href="#loading-in-data" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">#</a></h1>
+<section id="risk-management-and-return">
+<h2>risk management and return<a class="headerlink" href="#risk-management-and-return" title="Permalink to this headline">#</a></h2>
+<p>to be made</p>
 </section>
-<section id="calculating-returns">
-<h2>calculating returns<a class="headerlink" href="#calculating-returns" title="Permalink to this headline">#</a></h2>
+<section id="interest-rate">
+<h2>Interest Rate<a class="headerlink" href="#interest-rate" title="Permalink to this headline">#</a></h2>
+<p>to be made</p>
 </section>
-<section id="modern-portfolio-theory">
-<h2>modern portfolio theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">#</a></h2>
+<section id="inflation">
+<h2>Inflation<a class="headerlink" href="#inflation" title="Permalink to this headline">#</a></h2>
+<p>to be made</p>
+</section>
+<section id="the-monetary-economics">
+<h2>The Monetary Economics<a class="headerlink" href="#the-monetary-economics" title="Permalink to this headline">#</a></h2>
+<p>to be made</p>
+<section id="money-creation-and-fractional-reserve-banking">
+<h3>money creation and fractional reserve banking<a class="headerlink" href="#money-creation-and-fractional-reserve-banking" title="Permalink to this headline">#</a></h3>
+<p>to be made</p>
+</section>
+</section>
+<section id="income">
+<h2>income<a class="headerlink" href="#income" title="Permalink to this headline">#</a></h2>
+<p>To be made</p>
+</section>
+<section id="spending">
+<h2>spending<a class="headerlink" href="#spending" title="Permalink to this headline">#</a></h2>
+<p>To be made</p>
 </section>
 </section>
 
@@ -405,12 +498,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="modern_portfolio_theory.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="fundamental_understanding_intuition.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Modern Portfolio Theory</p>
+            <p class="prev-next-title">Intuition</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="financial_planning_tools.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Planning tools</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

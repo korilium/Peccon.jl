@@ -4,6 +4,11 @@
 format: jb-book
 root: intro
 chapters:
-- file: fundamental_understandings
-- file: modern_portfolio_theory
-- file: library 
+- file: fundamental_understanding_intro
+  sections:
+  - file: fundamental_understanding_intuition
+  - file: fundamental_understanding_technical
+- file: financial_planning_tools
+  sections: 
+  - file: modern_portfolio_theory 
+- file: API 
