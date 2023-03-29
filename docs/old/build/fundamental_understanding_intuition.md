@@ -1,16 +1,25 @@
 # Intuition 
-to be made 
+Financial planning has three main area's of focus: income, spending and investment/savings. These three area's are fundamentally linked: 
 
 
+
+![risk](images/income_Investment_Spending.png)
+
+
+Income is the money that you earn from you wage. This income is then subdivided in your savings and expenditures depending on your spending behavior. Consequentially, a part of the savings is invested into different kinds of assets. Depending on the risk you take, these assets will return a certain profit or loss. In each subdomain we can optimize choices in a way that benefits your financial well-being. The fundamental context around these area's will be explained in the following sections. 
 
 ## Investments 
-to be made 
+Investments are important. They are the corner stone of planning your financial well-being. It is however not easy to decide on what you should invest in exactly. A whole industry is build around that question and it becomes even harder when you take into account the ramifications of those decisions. It is therefore paramount to fully understand the options available and the possible caveats. The investment decision is the most difficult one you will make on your financial-well being and most of the financial planning tools will therefore revolve around it. 
+
+In this subsection, however, a small introduction to the basic concepts in investment is given. For a more in depth discussion see the technical explanation.    
+
+
 
 ### Risk Management and Returns 
 Risks are all about chances of future events, more specifically, chances of negative future events. In finance we always try to manage the negative impacts events might have on our investments. Take for example a coin flip. There are two possible outcomes: heads or tails. Each has a 50% chance of happening. In our example we maybe want to avoid flipping tail because we can lose 50 euros, while we win 50 euro if we get head. We therefore adjust the coin so that the probability of flipping tails will decrease. Adjusting your exposure to risk is what we call risk management. <b>The main goal of risk management is that if the event occurs we can live with the loss. </b> The idea is therefore that you set your own risk appetite (what are you willing to lose?). 
 
 
-The general idea about risk with respect to age is that as we grow older we should take less risk as the consequence of a bad event has a larger impact on your financial well-being. 
+The general notion about risk with respect to age is that as we grow older we should take less risks as the consequence of a bad event has a larger impact on your financial well-being. 
 
 
 Note that there are two dimensions when talking about risk (see graph): 
@@ -98,11 +107,6 @@ As you can see the initial capital and debt are almost reduced due to the 5% inf
 
 
 
-### The Monetary Economy 
-
-
-
-$$ M V = Q P $$ 
 
 
 ## Income 

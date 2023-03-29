@@ -1,3 +1,10 @@
+
+"""
+    fin_data('ADAEUR')
+
+extracts the daily price of a stock
+
+"""
 function fin_data(Tickers,days = 250, clientKey = "0VS2G38H6PKP03GX" )
 
     #extract the data 
