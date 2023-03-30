@@ -3,7 +3,7 @@
 
 extracts the daily price info of multiple stocks and puts them in a vector of dataframes. 
 
-# Examples 
+#Examples 
 ```julia-repl 
 julia> fin_data(["ADAEUR", "SPY"])
 ```
