@@ -8,11 +8,11 @@ makedocs(modules = [Peccon],
         prettyurls = false)
     , 
     pages = Any[
-        "Introduction" => "src/index.md", 
-        "fundamental understanding" => "src/man/fundamental_understanding_intuition.md", 
-        "theory" => "src/man/Theory.md", 
-        "financial planning tools" => "src/man/financial_planning_tools.md",
-        "API" => "src/lib/API.md"
+        "Introduction" => "index.md", 
+        "fundamental understanding" => "man/fundamental_understanding_intuition.md", 
+        "theory" => "man/Theory.md", 
+        "financial planning tools" => "man/financial_planning_tools.md",
+        "API" => "lib/API.md"
 
     ])
 
