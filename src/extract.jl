@@ -6,8 +6,7 @@ extracts the daily price info of multiple stocks and puts them in a vector of da
 # Examples 
 ```julia-repl 
 julia> fin_data(["ADAEUR", "SPY"])
-```
-
+``` 
 """
 function fin_data(Tickers,days = 250, clientKey = "0VS2G38H6PKP03GX" )
 
