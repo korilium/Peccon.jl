@@ -15,3 +15,7 @@ makedocs(modules = [Peccon],
         "API" => "lib/API.md"
 
     ])
+
+    deploydocs(
+    repo = "github.com/KORILIUM/Peccon.jl.git",
+)
