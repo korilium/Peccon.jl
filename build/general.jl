@@ -3,12 +3,13 @@
 
 calculates the daily log returns of each stock in a portfolio based on the close price of the day. 
 
-# Examples 
+#Examples 
 ```julia-repl 
 julia> tickers = ["ADAEUR", "SPY"]
 julia> data = fin_data(tickers)
 julia> calc_returns(data, tickers)
 ```
+
 
 """
 function calc_returns(portfolio, Tickers)

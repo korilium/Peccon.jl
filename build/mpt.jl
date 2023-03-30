@@ -13,20 +13,6 @@ make random allocation on weights to see the trade-off between risk and return
 Next plot all possible allocation to see total impact
 In the end find optimal risk return combination  
 =# 
-
-"""
-    sim_opt(port_returns)
-
-simulates random portfolio combinations and calculates the expected return and standard deviation of the portfolio
-
-
-# Examples 
-```julia-repl 
-julia> port_returns = calc_returns(data, tickers)
-julia> sim_mpt(port_returns)
-```
-
-"""
 function sim_mpt(port_returns, simulations= 5000 )
 
     names_stock= names(port_returns)
@@ -75,19 +61,6 @@ end
 
 
 #calculate the sharp ratio 
-
-"""
-    sharp_ratio(port_sim)
-
-calculates the sharp ratio of each simulates portfolio 
-
-
-# Examples 
-```julia-repl 
-julia> port_sim = sim_mpt(port_returns)
-julia> sharp_ratio(port_sim) 
-```
-"""
 function sharp_ratio(port_sim, rf = 0.02)
     port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
     return sort!(port_sim, :sharp_ratio)
