@@ -9,7 +9,7 @@ julia> fin_data(["ADAEUR", "SPY"])
 ```
 
 """
-function fin_data(Tickers,days = 250, clientKey = "0VS2G38H6PKP03GX" )
+function fin_data(Tickers,clientKey, days = 250 )
 
     #extract the data 
     client = AlphaVantage.GLOBAL[]

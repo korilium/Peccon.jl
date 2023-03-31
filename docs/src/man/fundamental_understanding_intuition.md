@@ -1,6 +1,6 @@
 # Fundamental Understanding
 
-In this subsection of the book we delve deeper into the main concepts behind financial planning. The general intuition will be given in the first part of this section, while in the last section the theoretical aspects will be discussed. It is highly recommended to at least <b>understand</b> the intuitional part of the fundamentals as this will enable you to better account for the limitations and the context of each tool. 
+In this subsection of the book we delve deeper into the main concepts behind financial planning. The general intuition will be given in the first part of this section, while in the last section the theoretical aspects will be discussed. It is highly recommended to at least **understand** the intuitional part of the fundamentals as this will enable you to better account for the limitations and the context of each tool. 
 
 
 > Financial planning is like learning how to drive. Know the traffic rules and start in the parking lot. 
@@ -27,7 +27,7 @@ In this subsection, however, a small introduction to the basic concepts in inves
 
 
 #### Risk Management and Returns 
-Risks are all about chances of future events, more specifically, chances of negative future events. In finance we always try to manage the negative impacts events might have on our investments. Take for example a coin flip. There are two possible outcomes: heads or tails. Each has a 50% chance of happening. In our example we maybe want to avoid flipping tail because we can lose 50 euros, while we win 50 euro if we get head. We therefore adjust the coin so that the probability of flipping tails will decrease. Adjusting your exposure to risk is what we call risk management. <b>The main goal of risk management is that if the event occurs we can live with the loss. </b> The idea is therefore that you set your own risk appetite (what are you willing to lose?). 
+Risks are all about chances of future events, more specifically, chances of negative future events. In finance we always try to manage the negative impacts events might have on our investments. Take for example a coin flip. There are two possible outcomes: heads or tails. Each has a 50% chance of happening. In our example we maybe want to avoid flipping tail because we can lose 50 euros, while we win 50 euro if we get head. We therefore adjust the coin so that the probability of flipping tails will decrease. Adjusting your exposure to risk is what we call risk management. **The main goal of risk management is that if the event occurs we can live with the loss. ** The idea is therefore that you set your own risk appetite (what are you willing to lose?). 
 
 
 The general notion about risk with respect to age is that as we grow older we should take less risks as the consequence of a bad event has a larger impact on your financial well-being. 
@@ -41,7 +41,7 @@ Note that there are two dimensions when talking about risk (see graph):
 
 
 
-The most precarious risks for an investment are the one's with low probability and high consequence. The main reason for this is that the risks are not observed as much and thus estimating the probability of occurrence is rather difficult. Also, we humans tend to be irrational when dealing with risks {cite}`montibeller2015cognitive`. We generally over/underestimate them and are therefore overexposed to them or overprotected from them {cite}`Slovic2004`.
+The most precarious risks for an investment are the one's with low probability and high consequence. The main reason for this is that the risks are not observed as much and thus estimating the probability of occurrence is rather difficult. Also, we humans tend to be irrational when dealing with risks. We generally over/underestimate them and are therefore overexposed to them or overprotected from them.
 
 
 Returns are always expressed as an percentage of the initial investment and always refer to a certain time period.
@@ -66,7 +66,7 @@ a yearly interest rate of two percent on an initial capital of 1 000 euro will a
 
 #### Inflation 
 
-Inflation is the devaluation of currency. If today your 1€ can buy you x amount of goods and tomorrow your 1€ can buy x-1 goods then we speak of inflation. Inflation is good for debt and bad for <b>capital in currency </b>. Let's assume you have 1000 euro in debt, 1000 euro in a deposit and you earn 100 euro. know assume that you have 5% inflation such that also your wage increases with 5%. Then your assets and liabilities will change over time as it is depicted on the graph. 
+Inflation is the devaluation of currency. If today your 1€ can buy you x amount of goods and tomorrow your 1€ can buy x-1 goods then we speak of inflation. Inflation is good for debt and bad for **capital** . Let's assume you have 1000 euro in debt, 1000 euro in a deposit and you earn 100 euro. know assume that you have 5% inflation such that also your wage increases with 5%. Then your assets and liabilities will change over time as it is depicted on the graph. 
 
 ![inflation](images/plot_inflation_explained.png)
 
