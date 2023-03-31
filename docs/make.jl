@@ -1,3 +1,6 @@
+import Pkg; Pkg.add("Documenter")
+
+
 using Documenter, Peccon
 
 makedocs(modules = [Peccon],
