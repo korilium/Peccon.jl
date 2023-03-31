@@ -7,7 +7,7 @@ This is the julia package for the Peccon project.
 **Documentation**: [![][docs-latest-img]][docs-latest-url]
 
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
-[docs-latest-url]: https://korilium.github.io/Peccon.jl/intro.html
+[docs-latest-url]: https://korilium.github.io/Peccon.jl/index.html
 
 
 
