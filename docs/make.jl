@@ -20,5 +20,5 @@ makedocs(modules = [Peccon],
     ])
 
     deploydocs(
-    repo = "github.com/KORILIUM/Peccon.jl.git",
+    repo = "github.com/korilium/Peccon.jl.git",
 )
