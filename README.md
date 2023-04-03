@@ -2,7 +2,7 @@
 [![Build Status](https://github.com/korilium/Peccon.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/korilium/Peccon.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 
 
-This is the julia package for the Peccon project. the Peccon project is build for helping people make informative decisions in their financial well-being. 
+This is the julia package for the Peccon project. The Peccon project is build for helping people make informative decisions on their financial well-being. 
 
 documentation can be found here:
 
