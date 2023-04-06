@@ -14,6 +14,22 @@ Next plot all possible allocation to see total impact
 In the end find optimal risk return combination  
 =# 
 
+""" 
+    ret_var(daily_returns)
+
+gives back the expected return of the stock in the dataframe 
+"""
+function exp_ret(returns)
+    names_stock = names(returns)
+    exp_returns = DataFrame()
+    for i in names_stock
+        days = size(returns)[1]
+        expected_return = mean(returns[:,i])*days
+        exp_returns[:,i] = expected_return
+    end 
+    return exp_returns
+end 
+
 """
     sim_opt(port_returns)
 
@@ -48,9 +64,8 @@ function sim_mpt(port_returns, simulations= 5000 )
         w = weights/total
         Σ = cov(Matrix(port_returns))
         #calculate returns of the portfolio 
-        port_return = Matrix(port_returns)*w
 
-        expected_return = mean(port_return)*250
+        expected_return = mean(port_return)*250*w
 
         #calculate variance of the profolio 
         σ²= 0

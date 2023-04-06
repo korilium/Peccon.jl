@@ -2,7 +2,7 @@
 
 ## loading in data 
 ```@docs
-fin_data(Tickers,days = 250, clientKey = "0VS2G38H6PKP03GX")
+fin_data(Tickers, clientKey,days = 250)
 ```
 ## calculating returns 
 ```@docs

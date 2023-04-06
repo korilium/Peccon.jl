@@ -1,6 +1,6 @@
 # Fundamental Understanding
 
-In this subsection of the book we delve deeper into the main concepts behind financial planning. The general intuition will be given in the first part of this section, while in the last section the theoretical aspects will be discussed. It is highly recommended to at least **understand** the intuitional part of the fundamentals as this will enable you to better account for the limitations and the context of each tool. 
+In this subsection of the documentation we delve deeper into the main concepts behind financial planning. The general intuition will be given here, while the theoretical aspects will be discussed in next part. It is highly recommended to at least **understand** the intuitional part of the fundamentals as this will enable you to better account for the limitations and the context of each tool. 
 
 
 > Financial planning is like learning how to drive. Know the traffic rules and start in the parking lot. 
@@ -22,7 +22,7 @@ Income is the money that you earn from you wage. This income is then subdivided 
 ### Investments 
 Investments are important. They are the corner stone of planning your financial well-being. It is however not easy to decide on what you should invest in exactly. A whole industry is build around that question and it becomes even harder when you take into account the ramifications of those decisions. It is therefore paramount to fully understand the options available and the possible caveats. The investment decision is the most difficult one you will make and most of the financial planning tools will therefore revolve around it. 
 
-In this subsection, however, a small introduction to the basic concepts in investment is given. For a more in depth discussion see the technical explanation.    
+In this subsection, however, a small introduction to the basic concepts in investment is given. 
 
 
 
@@ -48,7 +48,7 @@ Returns are always expressed as an percentage of the initial investment and alwa
 Returns are coherently linked with risks: The higher the risk the higher the return. You can imagine it as in the following graph. 
 ![risk_return](images/risk_return.svg)
 
-As the risk increases so does the variability of the returns. This is called volatility and it is the main measurement of risk. In the stock market we can measure the risk of a stock by analyzing the fluctuations of the daily returns. 
+As the risk increases so does the variability of the returns. This is called volatility and it is one of the main measurement of risk. In the stock market we can measure the risk of a stock by analyzing the fluctuations of the daily returns. 
 
 
 In the next subsection we will talk about interest rates which are a kind of return generally discussed with bonds/obligations. 
