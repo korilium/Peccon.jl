@@ -26,8 +26,9 @@ StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
 
 [compat]
 AlphaVantage = "0.4"
-Documenter = "0.27"
 DataFrames = "1"
+Documenter = "0.27"
+Ipopt = "1"
 julia = "1"
 
 [extras]
