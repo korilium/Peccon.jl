@@ -26,10 +26,10 @@ data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:BSV][1] < 0.5
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:GLD][1] < 0.5
 end 
-returns = daily_returns(data1, Tickers)
+
 
 @testset "mpt" begin
-
+    returns = daily_returns(data1, Tickers)
     sim_port = sim_mpt(returns)
 
     ##### check for sim_mpt ##### 

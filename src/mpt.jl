@@ -17,21 +17,21 @@ In the end find optimal risk return combination
 =# 
 
 """
-    sim_opt(stock_returns, simulations= 5000, days=252)
+    sim_opt(returns, simulations= 5000, days=252)
 
 simulates random portfolio combinations and calculates the expected return and standard deviation of the portfolio
 
 
 # Examples 
 ```julia-repl 
-julia> stock_returns = daily_returns(data, tickers)
-julia> sim_mpt(stock_returns)
+julia> returns = daily_returns(data, tickers)
+julia> sim_mpt(returns)
 ```
 
 """
-function sim_mpt(stock_returns, simulations= 5000 )
+function sim_mpt(returns, simulations= 5000 )
     days = size(returns)[1]
-    names_stock= names(stock_returns)
+    names_stock= names(returns)
     port = DataFrame(exp_return = Float64[],
                     port_var = Float64[]
                     )
@@ -44,13 +44,13 @@ function sim_mpt(stock_returns, simulations= 5000 )
 
     while i <= simulations
         #set weights 
-        weights = rand(size(stock_returns)[2])
+        weights = rand(size(returns)[2])
         total = sum(weights)
 
         w = weights/total
-        Σ = cov(Matrix(stock_returns))
+        Σ = cov(Matrix(returns))
         #calculate returns of the portfolio 
-        stock_return = Matrix(stock_returns)*w
+        stock_return = Matrix(returns)*w
 
         expected_return = mean(stock_return)*days
 
