@@ -69,6 +69,13 @@ returns = daily_returns(data, Tickers) # hide
 port_sim = sim_mpt(returns)
 @df port_sim scatter(:port_var, :exp_return)
 ```
+```@example
+a = 1
+b = 2
+a + b
+```
+
+
 
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
