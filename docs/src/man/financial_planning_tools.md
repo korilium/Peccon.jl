@@ -62,9 +62,10 @@ port_sim = sim_mpt(returns)
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@example
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"] #hide
-data= fin_data(Tickers, 250) #hide 
-returns = daily_returns(data, Tickers) #hide
+using Peccon, StatsPlots, DataFrames # hide 
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"] # hide
+data= fin_data(Tickers, 250) # hide 
+returns = daily_returns(data, Tickers) # hide
 port_sim = sim_mpt(returns)
 @df port_sim scatter(:port_var, :exp_return)
 ```
