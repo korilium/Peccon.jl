@@ -26,9 +26,10 @@ data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:BSV][1] < 0.5
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:GLD][1] < 0.5
 end 
-
+returns = calc_returns(data1, Tickers)
 
 @testset "mpt" begin
+
     sim_port = sim_mpt(returns)
 
     ##### check for sim_mpt ##### 
@@ -38,7 +39,7 @@ end
     @test all(sim_port.port_std .> 0)
     # @df sim_port scatter(:port_std, :exp_return)
 
-    
+
     sharp = sharp_ratio(sim_port, 0.02)
 
     ##### sharp_ratio ##### +

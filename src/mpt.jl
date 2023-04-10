@@ -35,21 +35,21 @@ function exp_ret(returns)
 end 
 
 """
-    sim_opt(port_returns)
+    sim_opt(stock_returns, simulations= 5000, days=252)
 
 simulates random portfolio combinations and calculates the expected return and standard deviation of the portfolio
 
 
 # Examples 
 ```julia-repl 
-julia> port_returns = calc_returns(data, tickers)
-julia> sim_mpt(port_returns)
+julia> stock_returns = calc_returns(data, tickers)
+julia> sim_mpt(stock_returns)
 ```
 
 """
-function sim_mpt(port_returns, simulations= 5000, days=252 )
+function sim_mpt(stock_returns, simulations= 5000, days=252 )
 
-    names_stock= names(port_returns)
+    names_stock= names(stock_returns)
     port = DataFrame(exp_return = Float64[],
                     port_var = Float64[]
                     )
@@ -62,15 +62,15 @@ function sim_mpt(port_returns, simulations= 5000, days=252 )
 
     while i <= simulations
         #set weights 
-        weights = rand(size(port_returns)[2])
+        weights = rand(size(stock_returns)[2])
         total = sum(weights)
 
         w = weights/total
-        Σ = cov(Matrix(port_returns))
+        Σ = cov(Matrix(stock_returns))
         #calculate returns of the portfolio 
-        port_return = Matrix(port_returns)*w
+        stock_return = Matrix(stock_returns)*w
 
-        expected_return = mean(port_return)*days
+        expected_return = mean(stock_return)*days
 
         #calculate variance of the profolio 
         σ²= 0
@@ -104,11 +104,10 @@ calculates the sharp ratio of each simulates portfolio
 
 # Examples 
 ```julia-repl 
-julia> port_sim = sim_mpt(port_returns)
+julia> port_sim = sim_mpt(stock_returns)
 julia> sharp_ratio(port_sim) 
 ```
 """
-
 function sharp_ratio(port, rf = 0.02)
     port[:, :sharp_ratio] = (port[:,:exp_return] .- rf )./port[: , :port_std]
     return sort!(port, :sharp_ratio)
