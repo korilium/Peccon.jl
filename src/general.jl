@@ -1,5 +1,5 @@
 """ 
-    calc_returns(portfolio, Tickers)
+    daily_returns(portfolio, Tickers)
 
 calculates the daily log returns of each stock in a portfolio based on the close price of the day. 
 
@@ -11,7 +11,7 @@ julia> calc_returns(data, tickers)
 ```
 
 """
-function calc_returns(portfolio, Tickers)
+function daily_returns(portfolio, Tickers)
     #calculate returns for each stock 
     for x in portfolio 
         price = x[!,"adjusted_close"]
@@ -36,7 +36,8 @@ end
 
 """
     per_returns(returns)
-calculates the compound interest rate for a specific time-period from daily log returns 
+
+calculates the compounded return for a specific time-period from daily log returns 
 """
 function per_return(returns)
     days = size(returns)[1]

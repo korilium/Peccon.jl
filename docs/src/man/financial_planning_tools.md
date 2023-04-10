@@ -5,9 +5,9 @@ The modern portfolio theory (MPT) is one of the oldest applications in modern fi
 
 First extract the daily price data of all the assets you are considering in your portfolio. 
 ```julia 
-julia> Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]
+ Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]
 
-julia> data= fin_data(Tickers, 250)
+data= fin_data(Tickers, 250)
 5-element Vector{Any}:
  250×10 DataFrame
  Row │ timestamp   open      high      low       close     adjusted_close  vol ⋯
@@ -24,18 +24,6 @@ julia> data= fin_data(Tickers, 250)
 .
 .
 
- 250×10 DataFrame
- Row │ timestamp   open     high     low      close    adjusted_close  volume  ⋯
-     │ SubStrin…   Float64  Float64  Float64  Float64  Float64         Int64   ⋯
-─────┼──────────────────────────────────────────────────────────────────────────
-   1 │ 2023-03-29    41.67  41.879   41.4675    41.72         41.72     115378 ⋯
-   2 │ 2023-03-28    40.77  41.34    40.77      41.1          41.1     1023316
-   3 │ 2023-03-27    40.49  40.69    40.1       40.49         40.49     267293
-  ⋮  │     ⋮          ⋮        ⋮        ⋮        ⋮           ⋮            ⋮    ⋱
- 249 │ 2022-04-01    51.54  52.5     51.54      52.5          49.1929   457984
- 250 │ 2022-03-31    51.91  51.91    51.125     51.22         47.9935   413616
-                                                  3 columns and 235 rows omitted
-
 
 ``` 
 
@@ -43,7 +31,7 @@ Then calculated the daily log returns for each assets in the portfolio.
 
 
 ```julia 
-julia> returns = calc_returns(data, Tickers)
+returns = daily_returns(data, Tickers)
 250×5 DataFrame
  Row │ ADAEUR       AMZN          ING          VEU          PICK        
      │ Float64      Float64       Float64      Float64      Float64
@@ -66,7 +54,6 @@ port_sim = sim_mpt(returns)
 ──────┼─────────────────────────────────────────────────────────────────────────────────────────────────
     1 │   0.782005  0.371563      0.314956     0.187496    0.106037    0.29146      0.100051   0.60956
     2 │   0.44903   0.127016      0.204426     0.0915665   0.0956426   0.387233     0.221132   0.356393
-    3 │   0.752467  0.354838      0.22694      0.182917    0.165517    0.173968     0.250658   0.595682
   ⋮   │     ⋮          ⋮            ⋮             ⋮           ⋮           ⋮            ⋮          ⋮
  4999 │   1.08724   0.779559      0.29427      0.285084    0.156916    0.255411     0.0083186  0.882926
  5000 │   0.631883  0.366295      0.0328957    0.182578    0.451323    0.23108      0.102123   0.605223
@@ -74,7 +61,11 @@ port_sim = sim_mpt(returns)
 ```
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
-```julia 
+```@example
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"] #hide
+data= fin_data(Tickers, 250) #hide 
+returns = daily_returns(data, Tickers) #hide
+port_sim = sim_mpt(returns)
 @df port_sim scatter(:port_var, :exp_return)
 ```
 
@@ -88,7 +79,6 @@ port_opt = sharp_ratio(port_sim)
 ──────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     1 │ 0.000978628  0.0728112      0.0432636   0.00380148  0.538456      0.382372     0.0321063  0.269835  -0.0704925
     2 │ 0.0224071    0.0916218      0.0918305   0.0123358   0.671231      0.105515     0.119087   0.302691   0.00795236
-    3 │ 0.0278418    0.104237       0.0287333   0.0190882   0.71372       0.0756757    0.162782   0.322858   0.0242887
   ⋮   │      ⋮           ⋮            ⋮             ⋮            ⋮           ⋮            ⋮          ⋮           ⋮
  4999 │ 0.75761      0.309236       0.412322    0.159658    0.000185982   0.097781     0.330053   0.55609    1.32642
  5000 │ 0.735419     0.290243       0.422292    0.150836    0.00973458    0.0215554    0.395581   0.538742   1.32794

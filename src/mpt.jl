@@ -10,29 +10,11 @@ using AlphaVantage,
      Optimization, 
      OptimizationOptimJL
 
-
-
 #= 
 make random allocation on weights to see the trade-off between risk and return 
 Next plot all possible allocation to see total impact
 In the end find optimal risk return combination  
 =# 
-
-""" 
-    ret_var(daily_returns)
-
-gives back the expected return and variance of the stock in the dataframe 
-"""
-function exp_ret(returns)
-    names_stock = names(port_stock)
-    exp_returns = DataFrame()
-    for i in names_stock
-        days = size(returns)[1]
-        expected_return = mean(returns[:,i])*days
-        exp_returns[:,i] = expected_return
-    end 
-    return
-end 
 
 """
     sim_opt(stock_returns, simulations= 5000, days=252)
@@ -42,7 +24,7 @@ simulates random portfolio combinations and calculates the expected return and s
 
 # Examples 
 ```julia-repl 
-julia> stock_returns = calc_returns(data, tickers)
+julia> stock_returns = daily_returns(data, tickers)
 julia> sim_mpt(stock_returns)
 ```
 
