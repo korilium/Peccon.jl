@@ -14,11 +14,11 @@ julia> calc_returns(data, tickers)
 function calc_returns(portfolio, Tickers)
     #calculate returns for each stock 
     for x in portfolio 
-        price = x[!,"close"]
+        price = x[!,"adjusted_close"]
         returns = zeros(0)
 
-        for i=2:length(price) 
-            r = log(price[i]/price[i-1])
+        for i=1:(length(price)-1)
+            r = log(price[i]/price[i+1])
             append!(returns, r)
         end 
         #add null in the beginning of each column 
