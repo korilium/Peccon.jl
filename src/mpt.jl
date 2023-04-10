@@ -108,17 +108,12 @@ julia> port_sim = sim_mpt(port_returns)
 julia> sharp_ratio(port_sim) 
 ```
 """
-# function sharp_ratio(port_sim, rf = 0.02)
-#     port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
-#     return sort!(port_sim, :sharp_ratio)
-# end 
 
-# #utility function σ² - qE(Rₚ)
-# function utility_mpt(port_sim, q = 0 )
+function sharp_ratio(port, rf = 0.02)
+    port[:, :sharp_ratio] = (port[:,:exp_return] .- rf )./port[: , :port_std]
+    return sort!(port, :sharp_ratio)
+end 
 
-#     port_sim[:,:utility] = abs.(port_sim[:,:port_var] - q*port_sim[:,:exp_return])
-#     return sort!(port_sim,:utility)
-# end 
 
 """
     opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05)
