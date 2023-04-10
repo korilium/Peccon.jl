@@ -16,9 +16,9 @@ data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
 
 
 @testset "general" begin 
-    returns = calc_returns(data1, Tickers)
+    returns = daily_returns(data1, Tickers)
 
-    ##### checks for calc_returns  #####
+    ##### checks for daily_returns  #####
     # check for missing values 
     @test any(ismissing.(eachrow(returns))) == false
     # check for unreasonable  outliers
@@ -26,7 +26,7 @@ data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:BSV][1] < 0.5
     @test returns[partialsortperm(returns.VOO, 1:1, rev=true),:GLD][1] < 0.5
 end 
-returns = calc_returns(data1, Tickers)
+returns = daily_returns(data1, Tickers)
 
 @testset "mpt" begin
 
