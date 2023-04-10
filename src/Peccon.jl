@@ -2,7 +2,7 @@ module Peccon
 
 #export the package functions 
 export fin_data, 
-    calc_returns, 
+    daily_returns, 
     sim_mpt, 
     sharp_ratio, 
     opt_mpt, 
