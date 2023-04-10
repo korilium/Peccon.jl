@@ -29,8 +29,8 @@ julia> sim_mpt(stock_returns)
 ```
 
 """
-function sim_mpt(stock_returns, simulations= 5000, days=252 )
-
+function sim_mpt(stock_returns, simulations= 5000 )
+    days = size(returns)[1]
     names_stock= names(stock_returns)
     port = DataFrame(exp_return = Float64[],
                     port_var = Float64[]
