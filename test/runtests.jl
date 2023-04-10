@@ -6,7 +6,11 @@ using Test,
 const dir = joinpath(dirname(pathof(Peccon)), "..", "test", "test_data")
 
 ### create some test to check if the functions work properly 
-@testset "Peccon.jl" begin
+
+
+
+
+@testset "general" begin 
     # load in test data 
     test_ada = DataFrame(CSV.File(joinpath(dir,"ADAEUR.csv")))
     test_spy = DataFrame(CSV.File(joinpath(dir,"SPY.csv")))
@@ -23,6 +27,18 @@ const dir = joinpath(dirname(pathof(Peccon)), "..", "test", "test_data")
     @test returns_port[partialsortperm(returns_port.ADAEUR, 1:1, rev=true),:ADAEUR][1] < 0.5
     @test returns_port[partialsortperm(returns_port.ADAEUR, 1:1, rev=true),:SPY][1] < 0.5
     @test returns_port[partialsortperm(returns_port.ADAEUR, 1:1, rev=true),:DIS][1] < 0.5
+end 
+
+
+@testset "mpt" begin
+    # load in test data 
+    test_ada = DataFrame(CSV.File(joinpath(dir,"ADAEUR.csv")))
+    test_spy = DataFrame(CSV.File(joinpath(dir,"SPY.csv")))
+    test_dis = DataFrame(CSV.File(joinpath(dir,"DIS.csv")))
+    test_port  = [test_ada, test_spy, test_dis]
+    tickers = ["ADAEUR", "SPY", "DIS"]
+    returns_port = Peccon.calc_returns(test_port,tickers )
+
 
 
     ##### check for sim_mpt ##### 
@@ -35,12 +51,10 @@ const dir = joinpath(dirname(pathof(Peccon)), "..", "test", "test_data")
     # @df sim_port scatter(:port_std, :exp_return)
 
     ##### sharp_ratio ##### 
-    sharp = Peccon.sharp_ratio(sim_port, 0.02)
-    # check if it is the largest sharp ratio 
-    @test all(sharp[end,:sharp_ratio] .≥ sharp[:,:sharp_ratio])
-    # check if the best sharp ratio has indeed the highest return for the lowest variance 
-    @test all(sharp[end,:exp_return] .>  sharp[sharp[end,:port_std] .> sharp[:,:port_std], :exp_return])
+    # sharp = Peccon.sharp_ratio(sim_port, 0.02)
+    # # check if it is the largest sharp ratio 
+    # @test all(sharp[end,:sharp_ratio] .≥ sharp[:,:sharp_ratio])
+    # # check if the best sharp ratio has indeed the highest return for the lowest variance 
+    # @test all(sharp[end,:exp_return] .>  sharp[sharp[end,:port_std] .> sharp[:,:port_std], :exp_return])
 end
-
-
 

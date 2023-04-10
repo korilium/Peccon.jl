@@ -6,7 +6,11 @@ using AlphaVantage,
      Distributions, 
      IterTools, 
      Plots, 
-     CSV
+     CSV,
+     Optimization, 
+     OptimizationOptimJL
+
+
 
 #= 
 make random allocation on weights to see the trade-off between risk and return 
@@ -104,53 +108,43 @@ julia> port_sim = sim_mpt(port_returns)
 julia> sharp_ratio(port_sim) 
 ```
 """
-function sharp_ratio(port_sim, rf = 0.02)
-    port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
-    return sort!(port_sim, :sharp_ratio)
-end 
+# function sharp_ratio(port_sim, rf = 0.02)
+#     port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
+#     return sort!(port_sim, :sharp_ratio)
+# end 
 
-#utility function σ² - qE(Rₚ)
-function utility_mpt(port_sim, q = 0 )
+# #utility function σ² - qE(Rₚ)
+# function utility_mpt(port_sim, q = 0 )
 
-    port_sim[:,:utility] = abs.(port_sim[:,:port_var] - q*port_sim[:,:exp_return])
-    return sort!(port_sim,:utility)
-end 
+#     port_sim[:,:utility] = abs.(port_sim[:,:port_var] - q*port_sim[:,:exp_return])
+#     return sort!(port_sim,:utility)
+# end 
 
+"""
+    opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05)
 
+returns the efficient frontier for a portfolio. 
 
-
-
-
-
-
-
-
-
-using Optimization,  OptimizationOptimJL
-
-
-
-
-
-
+# Examples 
+```julia-repl 
+julia> port_opt = opt_mpt(returns)
+```
+"""
 function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05 )
-
 
     # cost function 
     F(w,p) = w'*p[1]*w - p[3] * p[2]'*w
     #constraints 
     cons(res, w, p) = (res .=[w; sum(w)])
 
-
         #setting up parameters
     #variance  
     Σ = cov(Matrix(returns))*1260
     #stock returns 
-    per_returns = collect(per_ret(returns)[1,:])
+    per_returns = collect(per_return(returns)[1,:])
     #intial weights 
-    w0_size = 1/size(Tickers)[1]
-    w0 = repeat([w0_size],size(Tickers)[1] )
-
+    w0_size = 1/size(returns)[2]
+    w0 = repeat([w0_size],size(returns)[2] )
 
 
     #set bounds 
@@ -158,11 +152,6 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
     divers = fill(diversification_limit, nb_bounds-1)
     lcons = append!(divers, 1.0)
     ucons = fill(1.0, nb_bounds)
-
-
-
-
-
 
     #create dataframe 
     names_stock= names(returns)
@@ -173,8 +162,6 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
     for i in names_stock
         opt_port[:,"weight_"*i]= Float64[]
     end
-
-
 
     for i in risk_av_step 
         _p = [Σ, per_returns, i]

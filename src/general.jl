@@ -33,3 +33,13 @@ function calc_returns(portfolio, Tickers)
     end 
     return port_returns
 end 
+
+"""
+    per_returns(returns)
+calculates the compound interest rate for a specific time-period from daily log returns 
+"""
+function per_return(returns)
+    days = size(returns)[1]
+    ann_returns = mapcols(col ->  exp(sum(col))-1, returns)
+        return ann_returns
+    end 
