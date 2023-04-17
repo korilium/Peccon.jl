@@ -1,0 +1,4 @@
+# This is a basic workflow to help you get started with Actions
+
+- name: Upload coverage reports to Codecov
+  uses: codecov/codecov-action@v3
