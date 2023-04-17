@@ -6,7 +6,9 @@ using AlphaVantage,
      Distributions, 
      IterTools, 
      Plots, 
-     CSV
+     CSV,
+     Optimization, 
+     OptimizationOptimJL
 
 #= 
 make random allocation on weights to see the trade-off between risk and return 
@@ -14,38 +16,22 @@ Next plot all possible allocation to see total impact
 In the end find optimal risk return combination  
 =# 
 
-""" 
-    ret_var(daily_returns)
-
-gives back the expected return of the stock in the dataframe 
 """
-function exp_ret(returns)
-    names_stock = names(returns)
-    exp_returns = DataFrame()
-    for i in names_stock
-        days = size(returns)[1]
-        expected_return = mean(returns[:,i])*days
-        exp_returns[:,i] = expected_return
-    end 
-    return exp_returns
-end 
-
-"""
-    sim_opt(port_returns)
+    sim_opt(returns, simulations= 5000, days=252)
 
 simulates random portfolio combinations and calculates the expected return and standard deviation of the portfolio
 
 
 # Examples 
 ```julia-repl 
-julia> port_returns = calc_returns(data, tickers)
-julia> sim_mpt(port_returns)
+julia> returns = daily_returns(data, tickers)
+julia> sim_mpt(returns)
 ```
 
 """
-function sim_mpt(port_returns, simulations= 5000 )
-
-    names_stock= names(port_returns)
+function sim_mpt(returns, simulations= 5000 )
+    days = size(returns)[1]
+    names_stock= names(returns)
     port = DataFrame(exp_return = Float64[],
                     port_var = Float64[]
                     )
@@ -58,14 +44,15 @@ function sim_mpt(port_returns, simulations= 5000 )
 
     while i <= simulations
         #set weights 
-        weights = rand(size(port_returns)[2])
+        weights = rand(size(returns)[2])
         total = sum(weights)
 
         w = weights/total
-        Σ = cov(Matrix(port_returns))
+        Σ = cov(Matrix(returns))
         #calculate returns of the portfolio 
+        stock_return = Matrix(returns)*w
 
-        expected_return = mean(port_return)*250*w
+        expected_return = mean(stock_return)*days
 
         #calculate variance of the profolio 
         σ²= 0
@@ -74,7 +61,7 @@ function sim_mpt(port_returns, simulations= 5000 )
             σ² +=x 
         end 
 
-        port_var = (σ²*250)
+        port_var = (σ²*days)
 
         list = [expected_return, port_var, w]
         #decompose 
@@ -99,19 +86,78 @@ calculates the sharp ratio of each simulates portfolio
 
 # Examples 
 ```julia-repl 
-julia> port_sim = sim_mpt(port_returns)
+julia> port_sim = sim_mpt(stock_returns)
 julia> sharp_ratio(port_sim) 
 ```
 """
-function sharp_ratio(port_sim, rf = 0.02)
-    port_sim[:, :sharp_ratio] = (port_sim[:,:exp_return] .- rf )./port_sim[: , :port_std]
-    return sort!(port_sim, :sharp_ratio)
+function sharp_ratio(port, rf = 0.02)
+    port[:, :sharp_ratio] = (port[:,:exp_return] .- rf )./port[: , :port_std]
+    return sort!(port, :sharp_ratio)
 end 
 
-#utility function σ² - qE(Rₚ)
-function utility_mpt(port_sim, q = 0 )
 
-    port_sim[:,:utility] = abs.(port_sim[:,:port_var] - q*port_sim[:,:exp_return])
-    return sort!(port_sim,:utility)
+"""
+    opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05)
+
+returns the efficient frontier for a portfolio. 
+
+# Examples 
+```julia-repl 
+julia> port_opt = opt_mpt(returns)
+```
+"""
+function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05 )
+
+    # cost function 
+    F(w,p) = w'*p[1]*w - p[3] * p[2]'*w
+    #constraints 
+    cons(res, w, p) = (res .=[w; sum(w)])
+
+        #setting up parameters
+    #variance  
+    Σ = cov(Matrix(returns))*1260
+    #stock returns 
+    per_returns = collect(per_return(returns)[1,:])
+    #intial weights 
+    w0_size = 1/size(returns)[2]
+    w0 = repeat([w0_size],size(returns)[2] )
+
+
+    #set bounds 
+    nb_bounds = length(w0) +1 
+    divers = fill(diversification_limit, nb_bounds-1)
+    lcons = append!(divers, 1.0)
+    ucons = fill(1.0, nb_bounds)
+
+    #create dataframe 
+    names_stock= names(returns)
+    opt_port = DataFrame(exp_return = Float64[],
+                    port_var = Float64[], 
+                    risk_aversion = Float64[],
+                    )
+    for i in names_stock
+        opt_port[:,"weight_"*i]= Float64[]
+    end
+
+    for i in risk_av_step 
+        _p = [Σ, per_returns, i]
+        optprob = OptimizationFunction(F, Optimization.AutoForwardDiff(), cons = cons) 
+        prob = OptimizationProblem(optprob, w0, _p, lcons = lcons, ucons = ucons)
+
+        sol = solve(prob, IPNewton())
+
+        woptimal = sol.u
+        expected_return = mean(Matrix(returns)*woptimal)*1260
+        Σ = cov(Matrix(returns))*1260
+        var = woptimal'*Σ*woptimal
+        list = [expected_return, var, i, woptimal]
+        results = collect(Iterators.flatten(list))
+        push!(opt_port, results)
+    end 
+    return opt_port
 end 
+
+
+
+
 
