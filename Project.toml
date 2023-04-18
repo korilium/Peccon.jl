@@ -29,9 +29,8 @@ CSV = "0.10"
 AlphaVantage = "0.4"
 DataFrames = "1"
 Documenter = "0.27"
-
+Optimization = "3"
 ModelingToolkit = "8"
-
 OptimizationOptimJL = "0.1"
 Optim = "1"
 OptimizationMOI = "0.1"
