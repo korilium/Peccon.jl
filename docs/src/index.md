@@ -25,7 +25,7 @@ Once you have your API key, it becomes possible to extract financial market data
 ```julia 
 julia> Tickers = ["ADAEUR", "SPY"]
 
-julia> fin_data(Tickers, 250, "your_API_key")
+julia> fin_data(Tickers, 252, "your_API_key")
 
 ```
 
