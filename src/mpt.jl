@@ -113,7 +113,7 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
     #constraints 
     cons(res, w, p) = (res .=[w; sum(w)])
 
-        #setting up parameters
+    #setting up parameters
     #variance  
     Σ = cov(Matrix(returns))*1260
     #stock returns 

@@ -1,9 +1,9 @@
-using Peccon, StatsPlots
+using Peccon, StatsPlots, AlphaVantage, DataFrames
 
 
-Tickers = ["VOO", "BSV", "GLD"]
+Tickers = ["IUSA",  "IEMA", "WTCH", "VWRL"]
 
-data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
+data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 240)
 
 returns = daily_returns(data1, Tickers)
 port_sim = sim_mpt(returns,5000,1260)
@@ -23,3 +23,6 @@ sharp = sharp_ratio(port_sim)
 all(sharp[end,:exp_return] .>  sharp[sharp[end,:port_std] .> sharp[:,:port_std], :exp_return])
 
 @df test scatter!(:port_var, :exp_return)
+
+
+df = time_series_daily_adjusted( "VWRL", outputsize= "full")
