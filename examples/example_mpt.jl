@@ -1,6 +1,5 @@
 using Peccon, StatsPlots, AlphaVantage, DataFrames
 
-
 Tickers = ["IUSA",  "IEMA", "WTCH", "VWRL"]
 
 data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 240)
