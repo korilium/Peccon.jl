@@ -1,6 +1,6 @@
 module Peccon
 
-#export the package functions 
+#export the package functions to call them
 export fin_data, 
     daily_returns, 
     sim_mpt, 
