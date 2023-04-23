@@ -1,6 +1,5 @@
 # Peccon
 [![Build Status](https://github.com/korilium/Peccon.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/korilium/Peccon.jl/actions/workflows/CI.yml?query=branch%3Amaster)
-
 [![codecov](https://codecov.io/github/korilium/Peccon.jl/branch/master/graph/badge.svg?token=6CUZELLTR2)](https://codecov.io/github/korilium/Peccon.jl) 
 
 
