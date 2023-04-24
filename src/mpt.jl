@@ -106,7 +106,10 @@ returns the efficient frontier for a portfolio.
 julia> port_opt = opt_mpt(returns)
 ```
 """
-function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.05 )
+function opt_mpt(returns, 
+     risk_av_step = 0.0:0.02:2.0,
+     diversification_limit= 0.05,
+     w0=repeat([1/size(returns)[2]],size(returns)[2] ) )
 
     # cost function 
     F(w,p) = w'*p[1]*w - p[3] * p[2]'*w
@@ -114,14 +117,15 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
     cons(res, w, p) = (res .=[w; sum(w)])
 
     #setting up parameters
+    #days 
+    days= size(returns)[1]
     #variance  
     Σ = cov(Matrix(returns))*1260
     #stock returns 
     per_returns = collect(per_return(returns)[1,:])
     #intial weights 
-    w0_size = 1/size(returns)[2]
-    w0 = repeat([w0_size],size(returns)[2] )
-
+    # w0_size = 1/size(returns)[2]
+    # w0 = repeat([w0_size],size(returns)[2] )
 
     #set bounds 
     nb_bounds = length(w0) +1 
@@ -143,12 +147,11 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
         _p = [Σ, per_returns, i]
         optprob = OptimizationFunction(F, Optimization.AutoForwardDiff(), cons = cons) 
         prob = OptimizationProblem(optprob, w0, _p, lcons = lcons, ucons = ucons)
-
         sol = solve(prob, IPNewton())
 
         woptimal = sol.u
-        expected_return = mean(Matrix(returns)*woptimal)*1260
-        Σ = cov(Matrix(returns))*1260
+        expected_return = mean(Matrix(returns)*woptimal)*days
+        Σ = cov(Matrix(returns))*days
         var = woptimal'*Σ*woptimal
         list = [expected_return, var, i, woptimal]
         results = collect(Iterators.flatten(list))
