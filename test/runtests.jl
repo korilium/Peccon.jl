@@ -10,7 +10,7 @@ const dir = joinpath(dirname(pathof(Peccon)), "..", "test", "test_data")
 
 # load in test data 
 Tickers = ["VOO", "BSV", "GLD"]
-data1 = fin_data(Tickers, "0VS2G38H6PKP03GX", 1260)
+data1 = data_alpha(Tickers, "0VS2G38H6PKP03GX", 1260)
 
 
 
