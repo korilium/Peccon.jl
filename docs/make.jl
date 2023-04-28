@@ -13,6 +13,7 @@ makedocs(modules = [Peccon],
     pages = Any[
         "setup" => "index.md", 
         "fundamental understanding" => "man/fundamental_understanding_intuition.md", 
+        "glossary" => "man/glossary.md",
         "theory" => "man/Theory.md", 
         "financial planning tools" => "man/financial_planning_tools.md",
         "API" => "lib/API.md"
