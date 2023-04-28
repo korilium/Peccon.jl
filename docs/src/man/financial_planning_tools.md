@@ -102,8 +102,12 @@ DataFrameRow
 
 ### limitations 
 
-* based on expected values 
-    * not capture the skewed distribution of risk and return , gives rise to reduced volatility and inflated growth of return 
-* historical measurement 
-    * future might not be the same as the past 
-* risk measurement is probabilistic in nature, not structural. 
+There are three main limitation to this tool. The first limitation is that the MPT is a historical measurement of the portfolio performance. It does not say anything about future performance of the portfolio. Different Macro-economic situations might lead to total different end results. The second issue is that the tool is based on the expected return and variance of the portfolio. This captures the risk return relationship quite well but it does not take into account [skewness](https://en.wikipedia.org/wiki/Skewness) and [tail risk](https://en.wikipedia.org/wiki/Tail_risk). It therefore gives rise to a reduced volatility and an inflated growth rate for a portfolio. Lastly, the risk measurement is probabilistic in nature. It does not reflect the structural roots of the risk. For example, the risk of a stock are off a total different nature then that of a commodity, but to tool will still account for them the same way. 
+
+
+### Recommendations of usage 
+Never use this tool for individual stock picking and never but then also never rely *only* on the MPT. Always do your due diligence before creating your portfolio and again this is no way or form financial advice. 
+
+So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature and you are then therefore not fully exposed to one particular kind of risk. 
+
+To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low value in $P$. The reverse is true for people who are risk seeking. 

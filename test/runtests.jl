@@ -12,6 +12,7 @@ using Test,
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]
 data1 = data_alpha(Tickers, "0VS2G38H6PKP03GX", 1260)
 returns = daily_returns(data1, Tickers)
+period_returns = per_return(returns)
 
 
 
@@ -26,6 +27,10 @@ returns = daily_returns(data1, Tickers)
     @test returns[partialsortperm(returns[:,"IEMA.AS"], 1:1, rev=true),"IEMA.AS"][1] < 0.5
     @test returns[partialsortperm(returns[:,"WTCH.AS"], 1:1, rev=true),"WTCH.AS"][1] < 0.5
     @test returns[partialsortperm(returns[:,"VWRL.AS"], 1:1, rev=true),"VWRL.AS"][1] < 0.5
+
+    # test whether the peiod return is greater then the daily return (this is the case if taken over long period)
+    @test period_returns[:,"IUSA.AS"][1] > returns[1,"IUSA.AS"]
+
 end 
 
 

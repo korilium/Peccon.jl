@@ -34,10 +34,24 @@ function daily_returns(portfolio, Tickers)
     return port_returns
 end 
 
+
+
+#per returns 
+
+
 """
     per_return(returns)
 
 calculates the compounded return for a specific time-period from daily log returns 
+
+
+    # Examples 
+```julia-repl
+julia> tickers = ["ADAEUR", "SPY"]
+julia> data = fin_data(tickers)
+julia> calc_returns(data, tickers)
+julia> data_alpha(["ADAEUR", "SPY"])
+```
 """
 function per_return(returns)
     days = size(returns)[1]
