@@ -35,7 +35,7 @@ function daily_returns(portfolio, Tickers)
 end 
 
 """
-    per_returns(returns)
+    per_return(returns)
 
 calculates the compounded return for a specific time-period from daily log returns 
 """
