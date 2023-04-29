@@ -44,13 +44,13 @@ We solve this optimal design problem using the [Interior point Newton algorithm]
 The only parameter is our risk-preference $P$. For each risk-preference $P$ there is an optimal combination of stock that minimizes our cost function. This creates the efficient frontier 
 
 ### The efficient frontier 
-The upward sloped portion of the hyperbola is the efficient frontier. It reflects the best *expected* level of return for its level of ris as you will get the maximum amount of return with the least amount of variance for your portfolio. 
+The upward sloped portion of the hyperbola is the efficient frontier. It reflects the best *expected* level of return for its level of risk as you will get the maximum amount of return with the least amount of variance for your portfolio. 
 
  ![risk](images/efficient_frontier.png) 
 
 
 ### Sharp ratio 
-We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved as the same limitations apply here as in the tool. 
+We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved and has the same limitations apply here as for the tool. 
 
 
 ```math 
@@ -79,17 +79,16 @@ So why should you use this tool and for what purpose? It is highly recommended t
 To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low value in $P$. The reverse is true for people who are risk seeking. 
 
 
-# to be developed 
+## to be developed 
 
 #### Post-Modern Portfolio Theory 
 
 ##### Sortino ratio 
 
-## Captial asset pricing model (CAPM) 
+### Captial asset pricing model (CAPM) 
 
-### adaptations 
 
-## Optimal control of spending, saving and investment 
+### Optimal control of spending, saving and investment 
 
 
 

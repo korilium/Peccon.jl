@@ -8,5 +8,3 @@ The glossary is intented to give you an overview of all the financial jargon nee
 ## stock 
 
 ## asset class 
-
-##
