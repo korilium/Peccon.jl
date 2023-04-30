@@ -4,7 +4,7 @@
 
 In this julia package you can find all the fin tools that have been developed to optimize investment, spending and income. 
 These tools enable you to better anticipate your future financial well-being. 
-The library is intended to give you an intuitional feel and a theoretical explanation about theses tools. The library is not intended to give any financial advice. It rather enables you to have the necessary tools to make your own decisions.  
+The library is intended to give you an intuitional feel and a theoretical explanation about these tools. The library is not intended to give any financial advice. It rather enables you to have the necessary tools to make your own decisions.  
 
 The financial data is extracted by using AlphaVantage. More about this in the following subsection. 
 
@@ -25,7 +25,7 @@ Once you have your API key, it becomes possible to extract financial market data
 ```julia 
 julia> Tickers = ["ADAEUR", "SPY"]
 
-julia> fin_data(Tickers, 252, "your_API_key")
+julia> data_alpha(Tickers, 252, "your_API_key")
 
 ```
 
