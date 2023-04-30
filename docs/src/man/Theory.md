@@ -71,7 +71,7 @@ The cost function can be altered if the function stays convex. We can therefore 
 The current tool only implements the MPT. Future work will enable PMPT and other adaptions to be made possible. 
 
 
-### Recommendations of usage 
+### Recommended usage 
 Never use this tool for individual stock picking and never but then also never rely *only* on the MPT. Always do your due diligence before creating your portfolio and again this is no way or form financial advice. 
 
 So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature. MPT does not take that into account and you therefore have to de it yourself. You also are less exposed to one particular kind of risk. 

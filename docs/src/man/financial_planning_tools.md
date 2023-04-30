@@ -4,7 +4,7 @@ The modern portfolio theory (MPT) is one of the oldest applications in modern fi
 ### Example 
 
 First extract the daily price data of all the assets you are considering in your portfolio. 
-```@repl
+```@example mpt
 using Peccon
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; 
 # data = data_alpha(Tickers, "your_api_key", 248);
@@ -16,8 +16,7 @@ data[1]
 Then calculated the daily log returns for each assets in the portfolio. 
 
 
-```@example
-using Peccon; # hide
+```@example mpt
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 252); # hide
 returns = daily_returns(data, Tickers);
@@ -25,35 +24,22 @@ returns[1:10,:]
 ```
 
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
-```@repl
-using Peccon ; 
-Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248);  # hide
-returns = daily_returns(data, Tickers); #hide
+```@example mpt 
 port_sim = sim_mpt(returns);
 port_sim
 
 ```
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
-```@repl
-using Peccon, Pkg; # hide
-Pkg.add("StatsPlots"); # hide
-using StatsPlots; # hide 
-Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
-returns = daily_returns(data, Tickers);  # hide
-port_sim = sim_mpt(returns,10000 ); # hide
+```@example mpt 
 @df port_sim scatter(:port_var, :exp_return)
-```
+savefig("sim_fig.svg"); nothing # hide 
+``` 
+![](sim_fig.svg)
 
 calculate the efficient frontier of the combinations of stocks. 
 
-```@repl
-using Peccon ; # hide 
-Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; # hide
-returns = daily_returns(data, Tickers) ; # hide
+```@example mpt
 port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; 
 port_opt
 ```
@@ -62,30 +48,19 @@ In the dataframe the optimal portfolios with their respective risk-aversions are
 
 subsequently, add the efficient frontier to the simulated plot. 
 
-```@repl 
+```@example mpt
 
 using Peccon,Pkg ; # hide
 Pkg.add("StatsPlots"); # hide
 using StatsPlots; # hide 
-Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; # hide
-returns = daily_returns(data, Tickers) ; # hide
-port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; # hide
-port_sim = sim_mpt(returns,10000 ); # hide
-@df port_sim scatter(:port_var, :exp_return) # hide 
 @df port_opt scatter!(:port_var, :exp_return)
+savefig("opt_fig.svg"); nothing # hide 
 ``` 
-
+![](opt_fig.svg)
 
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
-```@repl
-using Peccon ; # hide 
-Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
-returns = daily_returns(data, Tickers) ; # hide 
-port_sim = sim_mpt(returns,10000 ) ; # hide
-port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; # hide
+```@example mpt 
 port_sim_sharp = sharp_ratio(port_sim) ; 
 port_sim_sharp[end,:]
 port_opt_sharp = sharp_ratio(port_sim) ; 
@@ -99,8 +74,8 @@ port_opt_sharp[end,:]
 There are three main limitation to this tool. The first limitation is that the MPT is a historical measurement of the portfolio performance. It does not say anything about future performance of the portfolio. Different Macro-economic situations might lead to total different end results. The second issue is that the tool is based on the expected return and variance of the portfolio. This captures the risk return relationship quite well but it does not take into account [skewness](https://en.wikipedia.org/wiki/Skewness) and [tail risk](https://en.wikipedia.org/wiki/Tail_risk). It therefore gives rise to a reduced volatility and an inflated growth rate for a portfolio. Lastly, the risk measurement is probabilistic in nature. It does not reflect the structural roots of the risk. For example, the risk of a stock are off a total different nature then that of a commodity, but to tool will still account for them the same way. 
 
 
-### Recommendations of usage 
-Never use this tool for individual stock picking and never but then also never rely *only* on the MPT. Always do your due diligence before creating your portfolio and again this is no way or form financial advice. 
+### Recommended usage
+Never use this tool for individual stock picking and never but then also never rely *only* on the MPT. Always do your own due diligence before creating your portfolio and again this is no way or form financial advice. 
 
 So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature and you are then therefore not fully exposed to one particular kind of risk. 
 
