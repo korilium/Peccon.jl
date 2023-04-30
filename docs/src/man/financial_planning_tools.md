@@ -9,7 +9,7 @@ using Peccon
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; 
 # data = data_alpha(Tickers, "your_api_key", 248);
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
-data
+data[1]
 
 ``` 
 
@@ -19,9 +19,9 @@ Then calculated the daily log returns for each assets in the portfolio.
 ```@example
 using Peccon; # hide
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 252); # hide
 returns = daily_returns(data, Tickers);
-returns
+returns[1:10,:]
 ```
 
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
@@ -37,7 +37,9 @@ port_sim
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@repl
-using Peccon, StatsPlots ; # hide
+using Peccon, Pkg; # hide
+Pkg.add("StatsPlots"); # hide
+using StatsPlots; # hide 
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide 
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
 returns = daily_returns(data, Tickers);  # hide
@@ -61,7 +63,10 @@ In the dataframe the optimal portfolios with their respective risk-aversions are
 subsequently, add the efficient frontier to the simulated plot. 
 
 ```@repl 
-using Peccon, StatsPlots ; # hide 
+
+using Peccon,Pkg ; # hide
+Pkg.add("StatsPlots"); # hide
+using StatsPlots; # hide 
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; # hide
 returns = daily_returns(data, Tickers) ; # hide
@@ -82,8 +87,8 @@ returns = daily_returns(data, Tickers) ; # hide
 port_sim = sim_mpt(returns,10000 ) ; # hide
 port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; # hide
 port_sim_sharp = sharp_ratio(port_sim) ; 
-@show port_sim_sharp[end,:]
-port_opt_sharp = sharp_ratio(port_sim)
+port_sim_sharp[end,:]
+port_opt_sharp = sharp_ratio(port_sim) ; 
 port_opt_sharp[end,:]
 
 
