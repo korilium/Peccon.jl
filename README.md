@@ -12,4 +12,11 @@ documentation can be found here:
 [docs-latest-url]: https://korilium.github.io/Peccon.jl/index.html
 
 
+[![ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://img.shields.io/badge/ColPrac-Contributor's%20Guide-blueviolet)](https://github.com/SciML/ColPrac)
+
+If you want to collborate on this please let me know. 
+Here are my social: 
+linkedin: https://www.linkedin.com/in/ignace-decocq-4b703a135/
+julia community: https://discourse.julialang.org/u/korilium/summary
+E-mail: ignace.decocq@hotmail.com 
 
