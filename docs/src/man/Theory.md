@@ -2,16 +2,16 @@
 In this subsection each financial planning tool is fully explained. 
 ## Modern Portfolio Theory (MPT)
 
-Modern Portfolio Theory is all about minimizing the variance of the portfolio while taking into account the return with some risk-preference. We therefore need to calculate first the returns of the portfolio and the covariance matrix of the portfolio. 
+Modern Portfolio Theory is all about minimizing the variance of the portfolio while taking into account the return of the portfolio with some risk-preference. The first thing to do, is to calculate the returns of the portfolio and the covariance matrix of the portfolio. 
 
 
-The expected return of the portfolio is calculated: 
+The expected return of the portfolio is calculated as follows: 
 ```math 
 E(R_P) = \sum_iw_iE(R_i)
 ```
 
-where $R_P$ is the return of the portfolio, $R_i$ is the return on the asset $i$ and $W_i$ is the weight of asset $i$ in the portfolio is equal to $\sum_i w_i = 1$.  
-Next, the variance of the portfolio can be expressed as follows : 
+where $R_P$ is the return of the portfolio, $R_i$ is the return of the asset $i$ and $W_i$ is the weight of asset $i$ in the portfolio. The sum of the weights should be equal to $\sum_i w_i = 1$.  
+Next, we express the variance of the portfolio as follows : 
 
 ```math
 \sigma^2_P  = \sum_i\sum_j w_iw_j\sigma_i\sigma_j\rho_{ij}
@@ -22,7 +22,7 @@ In matrix notation this becomes:
 \sigma^2_P =  w'\Sigma w  
 ``` 
 
-What we want to know is that for a given number of stocks which combinations is the most preferential. To achieve this we minimize the variance and take into account our risk-preference $P$ with respect to returns *based on some historic data*. 
+Remember, what we want to know is that for a given number of stocks which combinations gives us to lowest variance with the highest return. To achieve this we minimize the variance and take into account our risk-preference $P$ with respect to returns *based on some historic data*. 
 We therefore minimize the following cost function: 
 
 ```math 
@@ -50,7 +50,7 @@ The upward sloped portion of the hyperbola is the efficient frontier. It reflect
 
 
 ### Sharp ratio 
-We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved and has the same limitations apply here as for the tool. 
+We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved and has the same limitations the MPT (see subsection limitations). 
 
 
 ```math 
@@ -60,7 +60,7 @@ We can use the sharp ratio to see how well the return of the portfolio/asset com
 where $R_b$ is the return of the baseline "risk-free" product. 
 ### Limitations 
 
-There are three main limitation to this tool. The first limitation is that the MPT is a historical measurement of the portfolio performance. It does not say anything about future performance of the portfolio. Different Macro-economic situations might lead to total different end results. The second issue is that the tool is based on the expected return and variance of the portfolio. This captures the risk return relationship quite well but it does not take into account [skewness](https://en.wikipedia.org/wiki/Skewness) and [tail risk](https://en.wikipedia.org/wiki/Tail_risk). It therefore gives rise to a reduced volatility and an inflated growth rate for a portfolio. Lastly, the risk measurement is probabilistic in nature. It does not reflect the structural roots of the risk. For example, the risk of a stock are off a total different nature then that of a commodity, but to tool will still account for them the same way. 
+There are three main limitation to this tool. The first limitation is that the MPT is a historical measurement of the portfolio performance. It does not say anything about future performance of the portfolio. As consequence, different macro-economic situations might lead to total different end results for the MPT. The second issue is that the tool is based on the expected return and variance of the portfolio. This captures the risk-return relationship quite well but it does not take into account [skewness](https://en.wikipedia.org/wiki/Skewness) and [tail risk](https://en.wikipedia.org/wiki/Tail_risk). It therefore gives rise to a reduced volatility and an inflated growth rate for a portfolio. Lastly, the risk measurement is probabilistic in nature. It does not reflect the structural roots of the risks taken. For example, the risk of a stock are off a total different nature then that of a commodity, but MPT still accounts them in the same way. 
 
 
 
@@ -74,9 +74,9 @@ The current tool only implements the MPT. Future work will enable PMPT and other
 ### Recommendations of usage 
 Never use this tool for individual stock picking and never but then also never rely *only* on the MPT. Always do your due diligence before creating your portfolio and again this is no way or form financial advice. 
 
-So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature and you are then therefore not fully exposed to one particular kind of risk. 
+So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature. MPT does not take that into account and you therefore have to de it yourself. You also are less exposed to one particular kind of risk. 
 
-To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low value in $P$. The reverse is true for people who are risk seeking. 
+To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low values in $P$. The reverse is true for people who are risk seeking. 
 
 
 ## to be developed 
