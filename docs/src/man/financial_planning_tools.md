@@ -9,7 +9,7 @@ using Peccon
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; 
 # data = data_alpha(Tickers, "your_api_key", 252);
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
-data[1][1:10,:]
+data[1][1:5,:]
 
 ``` 
 
@@ -20,20 +20,20 @@ Then calculated the daily log returns for each asset in the portfolio.
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 252); # hide
 returns = daily_returns(data, Tickers);
-returns[1:10,:]
+returns[1:5,:]
 ```
 
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
 ```@example mpt 
 port_sim = sim_mpt(returns);
-port_sim[1:10,:]
+port_sim[1:5,:]
 
 ```
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@example mpt 
 using Peccon,Pkg; # hide
-Pkg.add("StatsPlots"); # hide
+Pkg.add("StatsPlots"); nothing # hide
 using StatsPlots; # hide 
 @df port_sim scatter(:port_var, :exp_return)
 savefig("sim_fig.svg"); nothing # hide 
@@ -44,7 +44,7 @@ calculate the efficient frontier of the combinations of stocks.
 
 ```@example mpt
 port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; 
-port_opt
+port_opt[1:5,:]
 ```
 In the dataframe the optimal portfolios with their respective risk-aversions are shown. 
 
@@ -53,7 +53,7 @@ subsequently, add the efficient frontier to the simulated plot.
 
 ```@example mpt
 @df port_opt scatter!(:port_var, :exp_return)
-savefig("opt_fig.svg"); # hide 
+savefig("opt_fig.svg"); nothing # hide 
 ``` 
 ![](opt_fig.svg)
 
