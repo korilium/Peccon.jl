@@ -18,7 +18,7 @@ port_opt =  opt_mpt(returns, 0.0:0.02:2.0, 0.00)
 
 @df port_opt scatter!(:port_var, :exp_return)
 
-
+sharp_ratio(port_opt, 0.02)
 
 
 

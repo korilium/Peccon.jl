@@ -5,9 +5,9 @@ The modern portfolio theory (MPT) is one of the oldest applications in modern fi
 
 First extract the daily price data of all the assets you are considering in your portfolio. 
 ```@repl
-using Peccon, StatsPlots, DataFrames
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]
-data= data_alpha(Tickers, 250)
+using Peccon;
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"];
+data= data_alpha(Tickers, 250);
 data
 
 ``` 
@@ -16,59 +16,60 @@ Then calculated the daily log returns for each assets in the portfolio.
 
 
 ```@repl
-using Peccon, StatsPlots, DataFrames
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]
-data= data_alpha(Tickers, 250)
-returns = daily_returns(data, Tickers)
+using Peccon;
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"];
+data= data_alpha(Tickers, 250);
+returns = daily_returns(data, Tickers);
 returns
 ```
 
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
 ```@repl
-using Peccon, StatsPlots, DataFrames
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]
-data= data_alpha(Tickers, 250)
-returns = daily_returns(data, Tickers)
-port_sim = sim_mpt(returns)
+using Peccon ; 
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; 
+data= data_alpha(Tickers, 250); 
+returns = daily_returns(data, Tickers);
+port_sim = sim_mpt(returns);
+port_sim
 
 ```
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@repl
-using Peccon, StatsPlots, DataFrames # hide 
-Tickers = ["VOO", "BSV", "GLD"] # hide
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" )
-returns = daily_returns(data, Tickers) # hide
-port_sim = sim_mpt(returns,10000 )
+using Peccon ; 
+Tickers = ["VOO", "BSV", "GLD"]; 
+data= fin_data(Tickers, "0VS2G38H6PKP03GX" ); 
+returns = daily_returns(data, Tickers); 
+port_sim = sim_mpt(returns,10000 );
 @df port_sim scatter(:port_var, :exp_return)
 ```
-```@repl
-a = 1
-b = 2
+```jldoctest
+a = 1 ; 
+b = 2 ; 
 a + b
 ```
 
 calculate the efficient frontier of the combinations of stocks. 
 
-```@repl
-using Peccon 
-Tickers = ["VOO", "BSV", "GLD"] # hide
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" )
-returns = daily_returns(data, Tickers) # hide
-port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00)
+```jldoctest
+using Peccon ; 
+Tickers = ["VOO", "BSV", "GLD"] ; 
+data= fin_data(Tickers, "0VS2G38H6PKP03GX" ) ; 
+returns = daily_returns(data, Tickers) ; 
+port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; 
 port_opt
 ```
 subsequently, add the efficient frontier to the simulated plot. 
 
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
-```@repl
-using Peccon 
-Tickers = ["VOO", "BSV", "GLD"] # hide
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" )
-returns = daily_returns(data, Tickers) # hide
-port_sim = sim_mpt(returns,10000 )
-port_sharp = sharp_ratio(port_sim)
+```jldoctest
+using Peccon ; 
+Tickers = ["VOO", "BSV", "GLD"] ; 
+data= fin_data(Tickers, "0VS2G38H6PKP03GX" ); 
+returns = daily_returns(data, Tickers) ; 
+port_sim = sim_mpt(returns,10000 ) ; 
+port_sharp = sharp_ratio(port_sim) ; 
 port_sharp[end,:]
 
 ```

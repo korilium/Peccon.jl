@@ -156,6 +156,7 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
         results = collect(Iterators.flatten(list))
         push!(opt_port, results)
     end 
+    opt_port[:,:port_std] = .√opt_port[:,:port_var]
     return opt_port
 end 
 
