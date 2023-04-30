@@ -44,13 +44,13 @@ We solve this optimal design problem using the [Interior point Newton algorithm]
 The only parameter is our risk-preference $P$. For each risk-preference $P$ there is an optimal combination of stock that minimizes our cost function. This creates the efficient frontier 
 
 ### The efficient frontier 
-The upward sloped portion of the hyperbola is the efficient frontier. It reflects the best *expected* level of return for its level of risk as you will get the maximum amount of return with the least amount of variance for your portfolio. 
+The upward-sloped portion of the hyperbola is the efficient frontier. It reflects the best *expected* level of return for its level of risk as you will get the maximum amount of return with the least amount of variance for your portfolio. 
 
  ![risk](images/efficient_frontier.png) 
 
 
 ### Sharp ratio 
-We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved and has the same limitations the MPT (see subsection limitations). 
+We can use the sharp ratio to see how well the return of the portfolio/asset compensates you for the risk that you take. The sharp ratio does however not take into account all risks involved and has the same limitations as the MPT (see subsection limitations). 
 
 
 ```math 
