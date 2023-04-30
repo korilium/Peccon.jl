@@ -6,7 +6,7 @@ The modern portfolio theory (MPT) is one of the oldest applications in modern fi
 First extract the daily price data of all the assets you are considering in your portfolio. 
 ```@repl
 using Peccon
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; # hide
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; 
 # data = data_alpha(Tickers, "your_api_key", 248);
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
 data
@@ -18,7 +18,7 @@ Then calculated the daily log returns for each assets in the portfolio.
 
 ```@example
 using Peccon; # hide
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; # hide
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
 returns = daily_returns(data, Tickers);
 returns
@@ -27,9 +27,9 @@ returns
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
 ```@repl
 using Peccon ; 
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
-returns = daily_returns(data, Tickers);
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248);  # hide
+returns = daily_returns(data, Tickers); #hide
 port_sim = sim_mpt(returns);
 port_sim
 
@@ -37,41 +37,55 @@ port_sim
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@repl
-using Peccon ; 
-Tickers = ["VOO", "BSV", "GLD"]; 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
-returns = daily_returns(data, Tickers); 
-port_sim = sim_mpt(returns,10000 );
+using Peccon, StatsPlots ; # hide
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; # hide 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
+returns = daily_returns(data, Tickers);  # hide
+port_sim = sim_mpt(returns,10000 ); # hide
 @df port_sim scatter(:port_var, :exp_return)
-```
-```@example
-a = 1 ;  # hide
-b = 2 ;  # hide
-a + b
 ```
 
 calculate the efficient frontier of the combinations of stocks. 
 
 ```@repl
-using Peccon ; 
-Tickers = ["VOO", "BSV", "GLD"] ; 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; 
-returns = daily_returns(data, Tickers) ; 
+using Peccon ; # hide 
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; # hide
+returns = daily_returns(data, Tickers) ; # hide
 port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; 
 port_opt
 ```
+In the dataframe the optimal portfolios with their respective risk-aversions are shown. 
+
+
 subsequently, add the efficient frontier to the simulated plot. 
+
+```@repl 
+using Peccon, StatsPlots ; # hide 
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; # hide
+returns = daily_returns(data, Tickers) ; # hide
+port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; # hide
+port_sim = sim_mpt(returns,10000 ); # hide
+@df port_sim scatter(:port_var, :exp_return) # hide 
+@df port_opt scatter!(:port_var, :exp_return)
+``` 
+
 
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
 ```@repl
-using Peccon ; 
-Tickers = ["VOO", "BSV", "GLD"] ; 
-data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
-returns = daily_returns(data, Tickers) ; 
-port_sim = sim_mpt(returns,10000 ) ; 
-port_sharp = sharp_ratio(port_sim) ; 
-port_sharp[end,:]
+using Peccon ; # hide 
+Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"] ; # hide 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
+returns = daily_returns(data, Tickers) ; # hide 
+port_sim = sim_mpt(returns,10000 ) ; # hide
+port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; # hide
+port_sim_sharp = sharp_ratio(port_sim) ; 
+@show port_sim_sharp[end,:]
+port_opt_sharp = sharp_ratio(port_sim)
+port_opt_sharp[end,:]
+
 
 ```
 
