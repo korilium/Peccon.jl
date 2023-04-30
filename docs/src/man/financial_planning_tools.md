@@ -7,13 +7,13 @@ First extract the daily price data of all the assets you are considering in your
 ```@example mpt
 using Peccon
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]; 
-# data = data_alpha(Tickers, "your_api_key", 248);
+# data = data_alpha(Tickers, "your_api_key", 252);
 data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
-data[1]
+data[1][1:10,:]
 
 ``` 
 
-Then calculated the daily log returns for each assets in the portfolio. 
+Then calculated the daily log returns for each asset in the portfolio. 
 
 
 ```@example mpt
@@ -26,12 +26,15 @@ returns[1:10,:]
 Subsequently, simulate 5000 possible portfolio combinations with the assets in the portfolio. 
 ```@example mpt 
 port_sim = sim_mpt(returns);
-port_sim
+port_sim[1:10,:]
 
 ```
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@example mpt 
+using Peccon,Pkg; # hide
+Pkg.add("StatsPlots"); # hide
+using StatsPlots; # hide 
 @df port_sim scatter(:port_var, :exp_return)
 savefig("sim_fig.svg"); nothing # hide 
 ``` 
@@ -49,12 +52,8 @@ In the dataframe the optimal portfolios with their respective risk-aversions are
 subsequently, add the efficient frontier to the simulated plot. 
 
 ```@example mpt
-
-using Peccon,Pkg ; # hide
-Pkg.add("StatsPlots"); # hide
-using StatsPlots; # hide 
 @df port_opt scatter!(:port_var, :exp_return)
-savefig("opt_fig.svg"); nothing # hide 
+savefig("opt_fig.svg"); # hide 
 ``` 
 ![](opt_fig.svg)
 
@@ -62,7 +61,7 @@ Lastly, calculate the sharp ratio to find the portfolio with the optimal  return
 
 ```@example mpt 
 port_sim_sharp = sharp_ratio(port_sim) ; 
-port_sim_sharp[end,:]
+@show port_sim_sharp[end,:]
 port_opt_sharp = sharp_ratio(port_sim) ; 
 port_opt_sharp[end,:]
 
