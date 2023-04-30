@@ -18,7 +18,10 @@ documentation can be found here:
 
 
 Here are my social: 
+
 linkedin: https://www.linkedin.com/in/ignace-decocq-4b703a135/
+
 julia community: https://discourse.julialang.org/u/korilium/summary
+
 E-mail: ignace.decocq@hotmail.com 
 
