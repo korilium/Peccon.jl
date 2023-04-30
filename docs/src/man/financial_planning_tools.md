@@ -5,9 +5,10 @@ The modern portfolio theory (MPT) is one of the oldest applications in modern fi
 
 First extract the daily price data of all the assets you are considering in your portfolio. 
 ```@repl
-using Peccon;
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"];
-data= data_alpha(Tickers, 250);
+using Peccon
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; # hide
+# data = data_alpha(Tickers, "your_api_key", 248);
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
 data
 
 ``` 
@@ -15,10 +16,10 @@ data
 Then calculated the daily log returns for each assets in the portfolio. 
 
 
-```@repl
-using Peccon;
-Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"];
-data= data_alpha(Tickers, 250);
+```@example
+using Peccon; # hide
+Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; # hide
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); # hide
 returns = daily_returns(data, Tickers);
 returns
 ```
@@ -27,7 +28,7 @@ Subsequently, simulate 5000 possible portfolio combinations with the assets in t
 ```@repl
 using Peccon ; 
 Tickers = ["ADAEUR",  "AMZN", "ING", "VEU", "PICK"]; 
-data= data_alpha(Tickers, 250); 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
 returns = daily_returns(data, Tickers);
 port_sim = sim_mpt(returns);
 port_sim
@@ -38,23 +39,23 @@ Plot the expected return and variance of each simulated portfolio to visualize t
 ```@repl
 using Peccon ; 
 Tickers = ["VOO", "BSV", "GLD"]; 
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" ); 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
 returns = daily_returns(data, Tickers); 
 port_sim = sim_mpt(returns,10000 );
 @df port_sim scatter(:port_var, :exp_return)
 ```
-```jldoctest
-a = 1 ; 
-b = 2 ; 
+```@example
+a = 1 ;  # hide
+b = 2 ;  # hide
 a + b
 ```
 
 calculate the efficient frontier of the combinations of stocks. 
 
-```jldoctest
+```@repl
 using Peccon ; 
 Tickers = ["VOO", "BSV", "GLD"] ; 
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" ) ; 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248) ; 
 returns = daily_returns(data, Tickers) ; 
 port_opt = opt_mpt(returns, 0.0:0.02:2.0, 0.00) ; 
 port_opt
@@ -63,10 +64,10 @@ subsequently, add the efficient frontier to the simulated plot.
 
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
-```jldoctest
+```@repl
 using Peccon ; 
 Tickers = ["VOO", "BSV", "GLD"] ; 
-data= fin_data(Tickers, "0VS2G38H6PKP03GX" ); 
+data= data_alpha(Tickers, "0VS2G38H6PKP03GX", 248); 
 returns = daily_returns(data, Tickers) ; 
 port_sim = sim_mpt(returns,10000 ) ; 
 port_sharp = sharp_ratio(port_sim) ; 
@@ -84,4 +85,4 @@ Never use this tool for individual stock picking and never but then also never r
 
 So why should you use this tool and for what purpose? It is highly recommended to use this tool with exchange traded funds (ETF) as these products are already substantially diversified and issue two of the MPT is therefore greatly diminished. Also, the structural risk that certain ETF are exposed is difficult the estimate and the MPT can help you gain insights into which ETF have less or more risk compared to the returns they offer. Lastly, MPT also works better if you invest in all assets classes as each class has risks of a different nature and you are then therefore not fully exposed to one particular kind of risk. 
 
-To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low value in $P$. The reverse is true for people who are risk seeking. 
+To know which portfolio weights you should apply, you have to understand your risk preference. If you do not want to take a lot of risk, it is beneficial to look at optimal portfolio's with low values in $P$. The reverse is true for people who are risk seeking. 
