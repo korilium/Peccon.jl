@@ -3,22 +3,8 @@ using MarketData
 
 
 
-# function data_yahoo()
+# function data_yahoo() to be developed
 
-
-# #parameters 
-# start_per = DateTime(2021,1,1)
-# end_per = DateTime(2023,1,1)
-# int = "1d"
-
-# portfolio = [] 
-# test = yahoo("IUSA", YahooOpt(period1 = start_per, period2= end_per, interval=int ))
-
-
-
-# for i in Tickers 
-#     yahoo(i, YahooOpt(period1 = start_per, period2= end_per, interval=int ))
-# end 
 
 
 """
