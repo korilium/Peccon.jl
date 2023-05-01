@@ -10,8 +10,6 @@ This is the julia package for the Peccon project. The Peccon project is build fo
 [docs-latest-url]: https://korilium.github.io/Peccon.jl/index.html
 
 
-
-
 If you want to collaborate on this please let me know: [![ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://img.shields.io/badge/ColPrac-Contributor's%20Guide-blueviolet)](https://github.com/SciML/ColPrac) 
 
 
