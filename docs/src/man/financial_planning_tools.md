@@ -1,7 +1,7 @@
 # Planning tools
 ## Modern Portfolio Theory (MPT) 
 The modern portfolio theory (MPT) is one of the oldest applications in modern finance still used today. The technical implication can be found in the theory subsection.  We will now demonstrate how MPT is implemented in the Peccon package and lastly cover some import limitations and recommendations of the tool. 
-### Example 
+### Example  
 
 First extract the daily price data of all the assets you are considering in your portfolio. 
 ```@example mpt
