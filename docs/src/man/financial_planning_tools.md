@@ -32,9 +32,7 @@ port_sim[1:5,:]
 
 Plot the expected return and variance of each simulated portfolio to visualize the efficient frontier.  
 ```@example mpt 
-using Peccon,Pkg; # hide
-Pkg.add("StatsPlots"); nothing # hide
-using StatsPlots; # hide 
+using Peccon, StatsPlots; # hide
 @df port_sim scatter(:port_var, :exp_return)
 savefig("sim_fig.svg"); nothing # hide 
 ``` 
@@ -53,6 +51,7 @@ subsequently, add the efficient frontier to the simulated plot.
 
 ```@example mpt
 @df port_opt scatter!(:port_var, :exp_return)
+
 savefig("opt_fig.svg"); nothing # hide 
 ``` 
 ![](opt_fig.svg)
