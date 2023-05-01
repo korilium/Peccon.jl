@@ -37,6 +37,7 @@ Optim = "1"
 Optimization = "3"
 OptimizationMOI = "0.1"
 OptimizationOptimJL = "0.1"
+StatsPlots = "0.15"
 julia = "1"
 StatsPlots = "0.15.4"
 [extras]
