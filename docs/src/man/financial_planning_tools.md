@@ -35,7 +35,11 @@ Plot the expected return and variance of each simulated portfolio to visualize t
 using Peccon, Pkg; # hide
 Pkg.add("StatsPlots") # hide
 using StatsPlots
-@df port_sim scatter(:port_var, :exp_return)
+@df port_sim scatter(:port_var, :exp_return, 
+                    title= "Portfolios return variance tradeoff", 
+                    label= "simulated",
+                    xlabel="variance", 
+                    ylabel="return")
 savefig("sim_fig.svg"); nothing # hide 
 ``` 
 ![](sim_fig.svg)
@@ -52,8 +56,7 @@ In the dataframe the optimal portfolios with their respective risk-aversions are
 subsequently, add the efficient frontier to the simulated plot. 
 
 ```@example mpt
-@df port_opt scatter!(:port_var, :exp_return)
-
+@df port_opt scatter!(:port_var, :exp_return, label="optimized")
 savefig("opt_fig.svg"); nothing # hide 
 ``` 
 ![](opt_fig.svg)
@@ -61,8 +64,6 @@ savefig("opt_fig.svg"); nothing # hide
 Lastly, calculate the sharp ratio to find the portfolio with the optimal  return variation ratio 
 
 ```@example mpt 
-port_sim_sharp = sharp_ratio(port_sim) ; 
-@show port_sim_sharp[end,:]
 port_opt_sharp = sharp_ratio(port_sim) ; 
 port_opt_sharp[end,:]
 
