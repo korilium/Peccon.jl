@@ -8,7 +8,8 @@ using AlphaVantage,
      Plots, 
      CSV,
      Optimization, 
-     OptimizationOptimJL
+     OptimizationOptimJL, 
+     LinearAlgebra
 
 #= 
 make random allocation on weights to see the trade-off between risk and return 
@@ -30,48 +31,42 @@ julia> sim_mpt(returns)
 
 """
 function sim_mpt(returns, simulations= 5000 )
-    days = size(returns)[1]
+    days = size(returns, 1)
     names_stock= names(returns)
+    n_stocks = size(returns, 2)
     port = DataFrame(exp_return = Float64[],
-                    port_var = Float64[]
+                    port_var = Float64[], 
+                    port_std = Float64[]
                     )
     for i in names_stock
         port[:,"weight_"*i]= Float64[]
     end
 
-
     i = 1;
-
+    Σ = cov(Matrix(returns))
     while i <= simulations
         #set weights 
-        weights = rand(size(returns)[2])
+        weights = rand(n_stocks)
         total = sum(weights)
-
         w = weights/total
-        Σ = cov(Matrix(returns))
+
         #calculate returns of the portfolio 
         stock_return = Matrix(returns)*w
-
         expected_return = mean(stock_return)*days
+        #old way of calculate variance of the profolio 
+        # σ²= 0
+        # for i in eachindex(w), j in eachindex(w)
+        #     x = w[i]*w[j]*Σ[i,j]
+        #     σ² +=x 
+        # end 
 
-        #calculate variance of the profolio 
-        σ²= 0
-        for i in eachindex(w), j in eachindex(w)
-            x = w[i]*w[j]*Σ[i,j]
-            σ² +=x 
-        end 
+        σ² = sum(w[i] * w[j] * Σ[i, j] for i in eachindex(w), j in eachindex(w))
+        port_var = σ²*days
 
-        port_var = (σ²*days)
-
-        list = [expected_return, port_var, w]
-        #decompose 
-        results = collect(Iterators.flatten(list))
-
-        push!(port, results )
+        push!(port, [expected_return, port_var, sqrt(port_var), w...])
         i += 1
     end 
 
-    port[:,:port_std] = .√port[:,:port_var]
     return port
 end 
 
@@ -106,7 +101,7 @@ returns the efficient frontier for a portfolio.
 julia> port_opt = opt_mpt(returns)
 ```
 """
-function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.0   )
+function opt_mpt(returns::DataFrame, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.0   )
 
     # cost function 
     F(w,p) = w'*p[1]*w - p[3] * p[2]'*w
@@ -116,10 +111,9 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
     #setting up parameters
     #days 
     days= size(returns)[1]
-    #variance  
+    #variance and mean returns 
     Σ = cov(Matrix(returns))*days
-    #stock returns 
-    per_returns = collect(per_return(returns)[1,:])
+    per_returns = mean(Matrix(returns), dims=1)[:]*days
     #initial weights 
     w0_size = 1/size(returns)[2]
     w0 = repeat([w0_size],size(returns)[2] )
@@ -149,14 +143,13 @@ function opt_mpt(returns, risk_av_step = 0.0:0.02:2.0, diversification_limit= 0.
         sol = solve(prob, IPNewton())
 
         woptimal = sol.u
-        expected_return = mean(Matrix(returns)*woptimal)*days
-        Σ = cov(Matrix(returns))*days
+        expected_return = dot(per_returns, woptimal)
         var = woptimal'*Σ*woptimal
         list = [expected_return, var, i, woptimal]
         results = collect(Iterators.flatten(list))
         push!(opt_port, results)
     end 
-    opt_port[:,:port_std] = .√opt_port[:,:port_var]
+    opt_port[:,:port_std] = sqrt.(opt_port[:,:port_var])
     return opt_port
 end 
 

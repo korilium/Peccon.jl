@@ -1,52 +1,31 @@
-using Peccon, StatsPlots, Statistics, Distributions, IterTools, Plots
+using Peccon, StatsPlots, Statistics, Distributions, IterTools, Plots, DataFrames
 
 Tickers = ["IUSA.AS", "IBCI.AS", "IEMA.AS", "WTCH.AS", "VWRL.AS"]
 
 
+
+@time begin
 data = data_alpha(Tickers, "0VS2G38H6PKP03GX", 1008)
-
-stock_price = data[1][:, :close]
-
-X = [float(1)]
-for (i, j) in partition(stock_price, 2,1)
-    x = float(i/j)
-    append!(X,x )
-end
-
-histogram(X)
-
-
-fit_mle(Normal, X)
-fit_mle(LogNormal, X)
-
-
-Y = rand(Normal( 1.0003283948,0.0113292031), 1007)
-
-Z = rand(LogNormal(0.0002637643, 0.01139101567), 1007)
-
-histogram(Y)
-histogram(Z)
-qqplot(X,Y)
-qqplot!(X,Z)
-
+end 
 
 
 returns = daily_returns(data, Tickers)
 
-
-
-
+@time  begin 
 port_sim = sim_mpt(returns,5000,)
+end 
+@time begin 
 @df port_sim scatter(:port_var, :exp_return, 
                     title= "Portfolios return variance tradeoff", 
                     label= "simulated",
                     xlabel="variance", 
                     ylabel="return")
-
+end 
 # port_sharp = sharp_ratio(port_sim)
 
+@time begin 
 port_opt =  opt_mpt(returns, 0.0:0.02:2.0, 0.00)
-
+end 
 
 @df port_opt scatter!(:port_var, :exp_return, label="optimized")
 
@@ -54,3 +33,93 @@ sharp_ratio(port_opt, 0.02)
 
 
 
+
+
+
+# tests 
+
+
+
+days = size(returns, 1)
+names_stock= names(returns)
+n_stocks = size(returns, 2)
+port = DataFrame(exp_return = Float64[],
+                port_var = Float64[], 
+                port_std = Float64[]
+                )
+    for i in names_stock
+        port[:,"weight_"*i]= Float64[]
+    end
+
+
+    i = 1;
+    Σ = cov(Matrix(returns))
+    while i <= simulations
+        #set weights 
+        weights = rand(n_stocks)
+        total = sum(weights)
+        w = weights/total
+        
+        #calculate returns of the portfolio 
+        stock_return = Matrix(returns)*w
+
+        expected_return = mean(stock_return)*days
+
+        #calculate variance of the profolio 
+        σ²= 0
+        for i in eachindex(w), j in eachindex(w)
+            x = w[i]*w[j]*Σ[i,j]
+            σ² +=x 
+        end 
+
+        port_var = (σ²*days)
+
+        list = [expected_return, port_var, w]
+        #decompose 
+        results = collect(Iterators.flatten(list))
+
+        push!(port, results )
+        i += 1
+    end 
+
+
+#set weights 
+weights = rand(n_stocks)
+total = sum(weights)
+w = weights/total
+
+#calculate returns of the portfolio 
+stock_return = Matrix(returns)*w
+
+expected_return = mean(stock_return)*days
+
+#calculate variance of the profolio 
+σ²= 0
+for i in eachindex(w), j in eachindex(w)
+    x = w[i]*w[j]*Σ[i,j]
+    σ² +=x 
+end 
+
+σ_test = sum(w[i] * w[j] * Σ[i, j] for i in eachindex(w), j in eachindex(w))
+σ² 
+port_var = (σ²*days)
+
+push!(port, [expected_return, port_var, sqrt(port_var), w...])
+i += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    port[:,:port_std] = .√port[:,:port_var]
+    return port

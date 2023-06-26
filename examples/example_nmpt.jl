@@ -77,7 +77,7 @@ loss(0.000000000000988, stock_price2, 1008)
 loss(0.01, stock_price3, 1008)
 
 
-# apply flux for neural micture models 
+# apply flux for neural mixture models 
 
 #  create data  
 # Generate data from two Gaussian distributions
