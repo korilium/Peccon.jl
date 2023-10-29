@@ -43,8 +43,10 @@ OptimizationMOI = "0.1"
 OptimizationOptimJL = "0.1"
 PlotlyJS = "0.18"
 Plots = "1"
-julia = "1"
+Statistics = "1"
 StatsPlots = "0.15"
+julia = "1"
+
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
