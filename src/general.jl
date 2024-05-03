@@ -14,7 +14,7 @@ julia> calc_returns(data, tickers)
 function daily_returns(portfolio, Tickers)
     #calculate returns for each stock 
     for x in portfolio 
-        price = x[!,"adjusted_close"]
+        price = x[!,"close"]
         returns = zeros(0)
 
         for i=1:(length(price)-1)

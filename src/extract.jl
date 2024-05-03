@@ -27,7 +27,7 @@ function data_alpha(Tickers,clientKey, days = 248 )
     portfolio = []
     days= days
     for i in Tickers 
-        asset = DataFrame(time_series_daily_adjusted( i, outputsize= "full"))
+        asset = DataFrame(time_series_daily( i, outputsize= "full"))
         asset = asset[1:days,:]
         asset[!,"ticker"] .= i 
         push!(portfolio, asset)
