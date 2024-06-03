@@ -7,7 +7,7 @@ calculates the daily log returns of each stock in a portfolio based on the close
 ```julia-repl 
 julia> tickers = ["ADAEUR", "SPY"]
 julia> data = fin_data(tickers)
-julia> calc_returns(data, tickers)
+julia> daily_returns(data, tickers)
 ```
 
 """
