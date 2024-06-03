@@ -1,7 +1,7 @@
 name = "Peccon"
 uuid = "f5b9415a-ee94-4c1d-9f36-779b616d2866"
 authors = ["ignace decocq"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 AlphaVantage = "6348297c-a006-11e8-3a05-9bbf8830fd7b"
