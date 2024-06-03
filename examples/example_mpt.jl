@@ -13,7 +13,7 @@ port_sim = sim_mpt(returns,5000)
 
 # port_sharp = sharp_ratio(port_sim)
 
-port_opt =  opt_mpt(returns, 0.0:0.001:2.0, 0.00)
+port_opt =  opt_mpt(returns, 0.0:0.01:2.0, 0.00)
 
 
 @df port_opt scatter!(:port_var, :exp_return)
