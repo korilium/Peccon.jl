@@ -32,6 +32,9 @@ sharp_ratio(port_opt, 0.02)
 ### simulated data  ###
 #######################
 
+
+# GBM #
+
 # Parameters
 S0 = [100.0, 20.0, 50.0, 60.0]         # Initial stock price
 M = [0.05, 0.07, 0.065, 0.06]           # Drift (annual rate of return)
@@ -44,6 +47,36 @@ n = 252            # Number of time steps (trading days in a year)
 
 
 returns = simulate_stocks_GBM(S0, M, θ, NAME, T, n)
+
+port_sim = sim_mpt(returns,5000)
+@df port_sim scatter(:port_var, :exp_return)
+
+
+
+port_opt =  opt_mpt(returns, 0.0:0.01:2.0, 0.00)
+
+
+@df port_opt scatter!(:port_var, :exp_return)
+
+sharp_ratio(port_opt, 0.02)
+
+# Heston model # 
+
+# parameters 
+# Parameters
+NAME = ["stock1", "stock2", "stock3", "stock4"]
+S0 = [100.0, 50.0, 20.0, 90.0]                  # Initial stock price
+V0 = [0.04,0.02,0.03,0.6]                       # Initial variance (volatility squared)
+M = [0.05,0.03,0.04,0.09]                       # Drift (annual rate of return)
+K = [2.0, 2.0, 2.0, 2.0]                        # Rate of mean reversion
+Vol = [0.04,0.01,0.02,0.7]                      # Long-term mean of the variance
+VolVol = [0.2,0.005,0.01,0.03]                  # Volatility of the variance
+Ρ = [-0.7, -0.5, -0.6, -0.9]                    # Correlation between the two Brownian motions
+T = 1.0                                         # Time horizon (1 year)
+n = 252                                         # Number of time steps (trading days in a year)
+
+returns  = simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
+
 
 port_sim = sim_mpt(returns,5000)
 @df port_sim scatter(:port_var, :exp_return)
