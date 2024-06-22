@@ -58,6 +58,7 @@ end
 
 """
     returns  = simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
+
 simulates stocks using Heston model. 
 
 
@@ -73,6 +74,8 @@ julia> VolVol = [0.2,0.005,0.01,0.03]                  # Volatility of the varia
 julia> Ρ = [-0.7, -0.5, -0.6, -0.9]                    # Correlation between the two Brownian motions
 julia> T = 1.0                                         # Time horizon (1 year)
 julia>n = 252                                          # Number of time steps (trading days in a year)
+julia> 
+julia> returns  = simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
 ```
 """
 function simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
@@ -109,6 +112,67 @@ function simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
     end 
 
     return daily_returns(df_tot, NAME)
+end 
+
+
+
+### Merton model 
+
+"""
+    returns = simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n)
+
+simulate stocks using Merton model. 
+
+#Examples
+```julia-repl
+julia> NAME = ["stock1", "stock2", "stock3", "stock4"]
+julia> S0 = [100.0, 50.0, 20.0, 90.0]                  # Initial stock price
+julia> M = [0.05,0.03,0.04,0.09]                       # Drift (annual rate of return)
+julia> Vol = [0.2,0.02,0.03,0.6]                      # Initial variance (volatility squared)
+julia> Int = [1,.15,.23,0.6]                          # jump intensity 
+julia> M_jump = [1, 0.001, 0.0015, 0.1]            # Average jump size  
+julia> Vol_jump = [0.3, 0.05, 0.075, 0.9]              # Jump size volatility
+julia> T = 1.0                                         # Time horizon (1 year)
+julia> n = 252                                         # Number of time steps (trading days in a year)
+julia> 
+julia> returns = simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n)
+```
+"""
+function simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n )
+    # Time vector
+    dt = T / n
+    time = collect(0:dt:T)
+
+    df_tot = []
+
+    # Generate random increments
+
+    for (s0, μ, σ, λ, μ_jump, σ_jump )  in zip(S0, M, Vol, Int, M_jump, Vol_jump)
+
+        #define brownian motion and setup jump proces 
+        ΔW = sqrt(dt) * randn(n)                                # brownian motion  
+
+        k = 0.5* σ_jump^2                                       # drift component due to jump process 
+        J = rand(Poisson( λ*dt), n)                             # number of jumps in timeframe 
+        Z_jump = μ_jump .* rand(Normal(0,σ_jump), n)            # jump size * variance normal (zero mean)
+        jumps = J .* Z_jump                                     # jumps 
+
+        # Preallocate stock price vector
+        S = zeros(n + 1)
+        S[1] = s0
+
+        # Simulate the stock price path 
+        for t in 2:length(time)
+            S[t] = S[t-1] * exp((Μ[1] - 0.5 * Vol[1]^2 - Int[1]*k ) * dt + σ * ΔW[t-1] + jumps[t-1]) # stock process 
+        end
+
+        df = DataFrame(Time = time, close = S)
+        push!(df_tot, df)
+
+    end 
+
+    return daily_returns(df_tot, NAME)
+
 end 
 
 
