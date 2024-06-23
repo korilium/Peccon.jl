@@ -163,7 +163,7 @@ function simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n )
 
         # Simulate the stock price path 
         for t in 2:length(time)
-            S[t] = S[t-1] * exp((Μ[1] - 0.5 * Vol[1]^2 - Int[1]*k ) * dt + σ * ΔW[t-1] + jumps[t-1]) # stock process 
+            S[t] = S[t-1] * exp((μ - 0.5 * Vol[1]^2 - Int[1]*k ) * dt + σ * ΔW[t-1] + jumps[t-1]) # stock process 
         end
 
         df = DataFrame(Time = time, close = S)

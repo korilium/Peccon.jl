@@ -6,9 +6,11 @@ export data_alpha,
     sim_mpt, 
     sharp_ratio, 
     opt_mpt, 
-    per_return
+    per_return, 
+    
 
 include("../src/extract.jl")
+include("../src/simulate.jl")
 include("../src/general.jl")
 include("../src/mpt.jl")
 

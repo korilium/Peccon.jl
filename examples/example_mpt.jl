@@ -75,7 +75,7 @@ VolVol = [0.2,0.005,0.01,0.03]                  # Volatility of the variance
 T = 1.0                                         # Time horizon (1 year)
 n = 252                                         # Number of time steps (trading days in a year)
 
-returns  = simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
+returns  = Peccon.simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
 
 
 port_sim = sim_mpt(returns,5000)
@@ -103,7 +103,7 @@ T = 1.0                                         # Time horizon (1 year)
 n = 252                                         # Number of time steps (trading days in a year)
 
 
-returns = simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n)
+returns = Peccon.simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n)
 
 
 port_sim = sim_mpt(returns,5000)
