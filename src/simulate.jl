@@ -175,4 +175,8 @@ function simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n )
 
 end 
 
+### Heston-Merton model 
+
+
+
 
