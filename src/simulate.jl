@@ -40,7 +40,7 @@ function simulate_stocks_GBM(S0, M, θ, NAME, T, n )
 
         # Simulate the stock price path
         for t in 2:length(time)
-            S[t] = S[t-1] * exp((μ[1] - 0.5*σ[1]^2)*dt + σ[1]*ΔW[t-1])
+            S[t] = S[t-1] * exp((μ[1] - 0.5*σ[1]^2)*dt + σ[1]*ΔW[t-1])          #stock process
         end
 
         # Create a DataFrame for better handling and plotting
@@ -102,8 +102,8 @@ function simulate_stocks_Heston(NAME, S0, V0, M, K, Vol, VolVol, Ρ, T, n)
 
         # Simulate the paths
         for t in 2:length(time)
-            V[t] = max(V[t-1] + κ * (θ - V[t-1]) * dt + σ * sqrt(V[t-1]) * ΔW_V[t-1], 0)
-            S[t] = S[t-1] * exp((μ - 0.5 * V[t-1]) * dt + sqrt(V[t-1]) * ΔW_S[t-1])
+            V[t] = max(V[t-1] + κ * (θ - V[t-1]) * dt + σ * sqrt(V[t-1]) * ΔW_V[t-1], 0) # variance proces
+            S[t] = S[t-1] * exp((μ - 0.5 * V[t-1]) * dt + sqrt(V[t-1]) * ΔW_S[t-1])      # stock proces 
         end
 
         df = DataFrame(Time = time, close = S, Variance = V)
@@ -128,9 +128,9 @@ simulate stocks using Merton model.
 julia> NAME = ["stock1", "stock2", "stock3", "stock4"]
 julia> S0 = [100.0, 50.0, 20.0, 90.0]                  # Initial stock price
 julia> M = [0.05,0.03,0.04,0.09]                       # Drift (annual rate of return)
-julia> Vol = [0.2,0.02,0.03,0.6]                      # Initial variance (volatility squared)
-julia> Int = [1,.15,.23,0.6]                          # jump intensity 
-julia> M_jump = [1, 0.001, 0.0015, 0.1]            # Average jump size  
+julia> Vol = [0.2,0.02,0.03,0.6]                       # Initial variance (volatility squared)
+julia> Int = [1,.15,.23,0.6]                           # jump intensity 
+julia> M_jump = [1, 0.001, 0.0015, 0.1]                # Average jump size  
 julia> Vol_jump = [0.3, 0.05, 0.075, 0.9]              # Jump size volatility
 julia> T = 1.0                                         # Time horizon (1 year)
 julia> n = 252                                         # Number of time steps (trading days in a year)

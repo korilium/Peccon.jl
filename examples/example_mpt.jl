@@ -95,12 +95,12 @@ sharp_ratio(port_opt, 0.02)
 NAME = ["stock1", "stock2", "stock3", "stock4"]
 S0 = [100.0, 50.0, 20.0, 90.0]                  # Initial stock price
 M = [0.05,0.03,0.04,0.09]                       # Drift (annual rate of return)
-Vol = [0.2,0.02,0.03,0.6]                      # Initial variance (volatility squared)
-Int = [1,.15,.23,0.6]                          # jump intensity 
-M_jump = [5, 0.001, 0.0015, 0.1]            # Average jump size  
+Vol = [0.2,0.02,0.03,0.6]                       # Initial variance (volatility squared)
+Int = [1,.15,.23,0.6]                           # jump intensity 
+M_jump = [5, 0.001, 0.0015, 0.1]                # Average jump size  
 Vol_jump = [0.2, 0.05, 0.075, 0.9]              # Jump size volatility
 T = 1.0                                         # Time horizon (1 year)
-n = 252   
+n = 252                                         # Number of time steps (trading days in a year)
 
 
 returns = simulate_stocks_Merton(NAME, S0, M, Vol, Int, M_jump, Vol_jump, T, n)
