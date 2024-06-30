@@ -7,7 +7,9 @@ export data_alpha,
     sharp_ratio, 
     opt_mpt, 
     per_return, 
-    
+    simulate_stocks_GBM, 
+    simulate_stocks_Heston, 
+    simulate_stocks_Merton
 
 include("../src/extract.jl")
 include("../src/simulate.jl")
