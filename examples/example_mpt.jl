@@ -1,8 +1,6 @@
 using Peccon, StatsPlots
 
 
-
-
 #################
 ### real data ###
 #################

@@ -1,4 +1,4 @@
-using Random, DataFrames, Peccon, StatsPlots
+using Random, DataFrames, StatsPlots
 
 
 """
