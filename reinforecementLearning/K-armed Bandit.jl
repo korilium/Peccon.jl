@@ -1,4 +1,4 @@
-using ReinforcementLearning
+using ReinforcementLearning, ReinforcementLearningTrajectories
 using Plots
 
 # ╔═╡ 1fcd93f0-4a5c-11eb-252d-9da5bc78b08b
@@ -23,18 +23,19 @@ init=0.0
 opt= InvDecay(1.0)
 agent= Agent(
             policy=QBasedPolicy(
-                learner= MCLearner(
-                    approximator= TabularQApproximator(
+                learner= TabularQApproximator(
                         n_state= length(state_space(env)), 
                         n_action=length(action_space(env)), 
                         init= init, 
                         
-                    ), 
-                    y=1.0
-                ),
+                    ),
                 explorer=explorer
             ),
             trajectory=VectorSARTTrajectory()
             )
             h1 = CollectBestAction(;best_Action=findmax(env.true_values)[2])
             h2 = TotalRewardPerEpisode(;is_display_on_exit=false)
+
+
+
+            t = Trajectory(Traces(a=Int[], b=Bool[]), BatchSampler(3), InsertSampleRatioControler(1.0, 3));
