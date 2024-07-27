@@ -10,4 +10,31 @@ using Flux
 # ╔═╡ db64341a-4b1b-11eb-3f7b-f11b26f442f4
 using Statistics
 
+
+
 env = MultiArmBanditsEnv()
+
+reset!(env)
+
+explorer = EpsilonGreedyExplorer(0.1)
+
+true_reward=0.0
+init=0.0
+opt= InvDecay(1.0)
+agent= Agent(
+            policy=QBasedPolicy(
+                learner= MCLearner(
+                    approximator= TabularQApproximator(
+                        n_state= length(state_space(env)), 
+                        n_action=length(action_space(env)), 
+                        init= init, 
+                        
+                    ), 
+                    y=1.0
+                ),
+                explorer=explorer
+            ),
+            trajectory=VectorSARTTrajectory()
+            )
+            h1 = CollectBestAction(;best_Action=findmax(env.true_values)[2])
+            h2 = TotalRewardPerEpisode(;is_display_on_exit=false)
