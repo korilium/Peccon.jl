@@ -20,6 +20,7 @@ port_sim = sim_mpt(returns,5000)
 
 port_opt =  opt_mpt(returns, 0.0:0.01:2.0, 0.00)
 
+test= x
 
 @df port_opt scatter!(:port_var, :exp_return)
 
