@@ -24,6 +24,7 @@ player_state_value = []
 player_states = []
 player_win = 0 
 player_draw = 0 
+ace = false
 
 
 #game logic for blackjack 
@@ -37,13 +38,13 @@ end
 
 
 #dealers policy 
-function dealerPolicy(current_value::Int, usable_ace)
+function dealerPolicy(current_value::Int, usable_ace, end_game::Bool=false) 
     if current_value > 21
         if usable_ace ==true
             current_value -= 10
             usable_ace = false 
         else 
-            return current_value, usable_ace, true 
+            return current_value, usable_ace, true
         end 
     end 
 
@@ -55,45 +56,53 @@ function dealerPolicy(current_value::Int, usable_ace)
             if current_value <= 10
                 return current_value +11, true, false
             else 
-                return current_value +1, usable_ace, true, false
+                return current_value +1, true, false 
             end 
         else
-            return current_value + card, usable_ace, false, false
+            return current_value + card, usable_ace, false 
         end 
     end 
 end 
 
+#check if policy works properly
+dealer_value, ace, end_game = dealerPolicy(dealer_value,ace)
+ ace = false
+dealer_value = 0
+
 #players policy 
 
-function playerPolicy(current_value::Int, usable_ace)
+function playerPolicy(current_value::Int, usable_ace, end_game=false)
     card = giveCard()
     if current_value > 21
         if usable_ace == true
             current_value -= 10
             usable_ace = false 
         else 
-            return current_value, usable_ace, true 
+            return current_value, usable_ace
         end 
+    end 
 
+    if current_value >= 20 
+        return current_value, usable_ace
 
-        if current_value >= 20 
-            return current_value, usable_ace, true
-
-        else
-            if card == 1
-                if current_value <= 10
-                    return current_value +11, true, false
-                else
-                    return current_value +1, usable_ace, true, false
-                end 
+    else
+        if card == 1
+            if current_value <= 10
+                return current_value +11, true
             else
-                return current_value + card, usable_ace, false, false
-            end
-        end 
+                return current_value +1, true
+            end 
+        else
+            return current_value + card, usable_ace
+        end
     end 
 end 
 
-player_win = 0
+#check if policy works properly 
+player_value, ace = playerPolicy(player_value, ace)
+ace = false 
+player_value =0 
+
 
 function giveCredit(start, player_value::Int,player_state_value,  dealer_value::Int, dealer_state_value)
     if start == true
@@ -143,12 +152,33 @@ dealer_value += giveCard()
 usable_ace = false 
 
 
-playerPolicy(giveCard(), player_value)
-
-
-playerPolicy(2, false)
-
-giveCard()
+player_value = playerPolicy(player_value, false)[1]
+player_value = playerPolicy(player_value, false)[1]
 
 
 
+
+########################################
+##### implement blackjack in julia #####
+######################################## 
+
+using ReinforcementLearning
+
+Base.@kwdef mutable struct BlackjackEnv 
+    reward::Union{Nothing, Int} = nothing
+end
+
+
+
+RLBase.action_space(env::BlackjackEnv) = [giveCard(), 0]
+
+# setting up interaction between action and state space 
+RLBase.reward(env::BlackjackEnv)  = env.reward
+
+RLBase.state(env::BlackjackEnv, ::Observation, ::DefaultPlayer) = !isnothing(env.reward) 
+
+RLBase.state_space(env::BlackjackEnv) =   [false, true, []]
+
+RLBase.is_terminated(env::BlackjackEnv) = !isnothing(env.reward)
+
+RLBase.reset!(env::BlackjackEnv) = env.reward = nothing
