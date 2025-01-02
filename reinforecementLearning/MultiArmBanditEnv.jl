@@ -37,6 +37,7 @@ run(policy, env, StopAfterNEpisodes(1000),
 
 
 
+fieldnames(typeof(policy))
 
-
-env.reward
+policy.learner
+policy.explorer
