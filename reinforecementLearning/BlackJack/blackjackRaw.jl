@@ -125,6 +125,7 @@ Base.@kwdef mutable struct BlackjackEnv <:AbstractEnv
     dealer_value::Int 
     usable_ace::Bool 
     reward::Union{Nothing, Int} = nothing
+    # is_done::Bool
 end 
 
 RLBase.action_space(env::BlackjackEnv) = [1, 0]
@@ -226,7 +227,6 @@ env = BlackjackEnv(player_value = 0, dealer_value = 0, usable_ace = false)
 
 
 
-
 ######################################
 ### simulations with greedy policy ###
 ######################################
@@ -273,6 +273,26 @@ run_simulations(100)
 
 
 
+
+
+
+
+
+
+
+RLBase.state()
+
+
+
+
+
+
+
+####################################### 
+### Q-learner not in RL environment ###
+#######################################
+
+
 # Define Q-Learning agent
 function train_q_learning(env::BlackjackEnv, num_episodes::Int, α::Float64, γ::Float64, ϵ::Float64)
     # Initialize Q-table
@@ -303,6 +323,7 @@ function train_q_learning(env::BlackjackEnv, num_episodes::Int, α::Float64, γ:
 
             # Update Q-value using Q-learning formula
             if !RLBase.is_terminated(env)
+                reward = isnothing(reward) ? 0.0 : reward
                 Q[(state, action)] += α * (reward + γ * maximum([Q[(next_state, a)] for a in action_Space]) - Q[(state, action)])
             else
                 Q[(state, action)] += α * (reward - Q[(state, action)])
@@ -319,21 +340,12 @@ end
 
 # Train the Q-learning agent
 env = BlackjackEnv(player_value = 0, dealer_value = 0, usable_ace = false)
-Q = train_q_learning(env, 10000, 0.1, 0.9, 0.1)
-
-RLBase.state_space(env)
+Q = train_q_learning(env, 100000, 0.1, 0.9, 0.1)
 
 
-
-state_Space = RLBase.state_space(env)
-action_Space = RLBase.action_space(env)
-Q = Dict((s, a) => 0.0 for s in state_space, a in action_space)
-
-
-
-# Define state and action spaces
-state_Space = [(p, d, a) for p in 1:31, d in 1:31, a in [true, false]]  # Player value, dealer value, usable ace
-action_Space = [0, 1]  # 0 = stand, 1 = hit
-
-# Initialize Q-table
-Q = Dict((state, action) => 0.0 for state in state_Space, action in action_Space)
+learner = BasicDQNLearner(
+    approximator = approximator,
+    policy = EpsilonGreedyPolicy(ϵ=0.1),
+    optimizer = ADAM(0.1),
+    γ = 0.99
+)
