@@ -5,10 +5,29 @@ using ReinforcementLearning
 ### helper functions ###
 ########################
 
+#gives card to the players 
 function giveCard() 
     c_list = vcat(collect(1:11), [10, 10, 10])
     return rand(c_list)
 end 
+
+
+# flattens the multidimensional state space into a one dimensional space 
+function flattenStateSpace(state)
+    p, d, uap, uad = state 
+    index = p * 31 * 2 * 2 + d * 2 * 2 + uap * 2 + uad +1  
+    return index
+end 
+
+#example 
+state = (0, 0, false, false)
+player_range = 31
+dealer_range = 31
+flattened_index = flattenStateSpace(state)
+println(flattened_index)
+
+
+# unflattens the one dimensional state space into a multidimensional space
 
 #############################
 ### setup the environment ###
@@ -19,28 +38,36 @@ Base.@kwdef mutable struct BlackjackEnv <: AbstractEnv
     dealer_value::Int = 0 
     usable_acePlayer::Bool = false
     usable_aceDealer::Bool = false 
-    reward::Union{Nothing, Int} = nothing
+    reward::Union{Nothing, Int} = 0
     is_done::Bool = false
 end 
 
-RLBase.state(env::BlackjackEnv, ::Observation, ::DefaultPlayer) = (env.player_value, env.dealer_value, env.usable_acePlayer, env.usable_aceDealer)
+RLBase.reward(env::BlackjackEnv) = env.reward
+RLBase.state(env::BlackjackEnv, ::Observation, ::DefaultPlayer) = flattenStateSpace((env.player_value, env.dealer_value, env.usable_acePlayer, env.usable_aceDealer))
 RLBase.reward(env::BlackjackEnv) = env.reward
 RLBase.is_terminated(env::BlackjackEnv) = env.is_done
 
 RLBase.action_space(env::BlackjackEnv) = [1, 0]
-RLBase.state_space(env::BlackjackEnv) = [(p, d, a, b) for p in 1:31, d in 1:31, a in [true, false], b in [true, false]]
+
+#create state space 
+
+state = [(p, d, a, b) for p in 0:31, d in 0:31, a in [true, false], b in [true, false]]
+range = 31 
+# convert state space to one dimensional space and link to environment
+RLBase.state_space(env::BlackjackEnv) = [flattenStateSpace(s) for s in state]
 
 function RLBase.reset!(env::BlackjackEnv)
     env.player_value = giveCard() + giveCard()
     env.dealer_value = giveCard() + giveCard()
     env.usable_acePlayer = false
     env.usable_aceDealer = false
-    env.reward = nothing
+    env.reward = 0
     env.is_done = false
 end
 
-BlackjackEnv()
+env = BlackjackEnv()
 
+fieldnames(typeof(env))
 #########################
 ### rules of the game ###
 #########################
@@ -121,17 +148,6 @@ acePlayer = size(RLBase.state_space(BlackjackEnv()))[4]
 
 
 
-# Flattening function: Maps multidimensional state to one-dimensional index
-function flatten_state(state)
-    p, d, ua, uad = state
-    index = p 
-    return index
-end
-
-
-
-
-
 
 approximator = TabularQApproximator(
     n_state = length(RLBase.state_space(BlackjackEnv())),
@@ -152,7 +168,7 @@ policy = QBasedPolicy(learner, EpsilonGreedyExplorer(0.1))
 # Define the trajectory
 trajectory = Trajectory(
     ElasticArraySARTSTraces(;
-        state = Tuple{Int64, Int64, Bool, Bool } => (),
+        state = Int64=> (),
         action = Int64 => (),
         reward = Float64 => (),
         terminal = Bool => (),
@@ -164,7 +180,9 @@ trajectory = Trajectory(
 agent = Agent( policy, trajectory)
 
 # Define the experiment setup
-env = BlackjackEnv()
+env = BlackjackEnv(player_value = 0, dealer_value = 0, usable_acePlayer = false)
+
+
 
 # Experiment: Training the agent on the Blackjack environment
 hook = TotalRewardPerEpisode()  # Collect the total reward per episode
@@ -176,7 +194,16 @@ experiment = Experiment(
 )
 
 
-
+function RLBase.act!(env::BlackjackEnv, action::Int, player::DefaultPlayer)
+    # Apply the action to the environment
+    step!(env, action)
+    
+    # Get the current flattened state
+    state = RLBase.state(env, Observation(), player)
+    
+    # Return the current state, reward, and termination status
+    return state, env.reward, env.is_done
+end
 
 # Run the training
 run(experiment)
